@@ -1,3 +1,65 @@
-h1 {
- color: blue;
+* {
+ box-sizing: border-box;
+ margin: 0;
+
+}
+
+html {
+ scroll-behavior: smooth;
+}
+
+#navbar {
+ width: 100%;
+ background-color:aqua;
+ position: fixed;
+}
+
+.nav-list {
+ display: flex;
+ justify-content: flex-end;
+ list-style-type: none;
+ margin-right: 1rem;
+}
+
+
+
+.nav-list a {
+ display: block;
+ text-decoration: none;
+ color: #f0f0f0;
+ padding: 2rem;
+ font-size: xx-large;
+}
+
+.nav-list a:hover {
+ background-color: blue;
+}
+
+#welcome-section {
+ background-color: rebeccapurple;
+ height: 100vh;
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+}
+
+#projects {
+ display: flex;
+ justify-content: center;
+}
+
+.projects-div {
+ width: 1280px;
+ display: flex;
+ flex-wrap: wrap;
+}
+
+.project-tile {
+  margin: 2rem;
+}
+
+#contact {
+ height: 25vh;
+ background-color: yellow;
 }
