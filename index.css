@@ -1,23 +1,63 @@
-html {
+* {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 #navbar {
-background-color: #7829da;
+  width: 100%;
+  position: fixed;
+  background-color: #7829da;
 }
 
 .nav-list {
-display: flex;
-justify-content: flex-end;
-list-style-type: none;
+  display: flex;
+  justify-content: flex-end;
+  list-style-type: none;
+  margin-right: 1rem;
 }
 
-/* .nav-list ul {
-  list-style-type: none;
-} */
-
-a {
+.nav-list a {
+  display: block;
   text-decoration: none;
   color: #f0f0f0;
+  padding: 1.5rem;
+  font-size: xx-large;
 }
 
+.nav-list a:hover {
+  background-color: #9a4bfc;
+}
+
+#welcome-section {
+  background-color: #7289da;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#projects {
+  display: flex;
+  justify-content: center;
+}
+
+.projects-grid {
+  width: 1280px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.project-tile {
+  margin: 2rem;
+}
+
+#contact {
+  height: 20vh;
+  background-color: #dea5a4;
+}
