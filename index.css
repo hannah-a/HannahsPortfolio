@@ -25,7 +25,6 @@ html {
 
 .nav-list a {
  display: block;
- text-decoration: none;
  color: #f0f0f0;
  padding: 2rem;
  font-size: xx-large;
@@ -35,6 +34,9 @@ html {
  background-color: blue;
 }
 
+a {
+ text-decoration: none;
+}
 #welcome-section {
  background-color: rebeccapurple;
  height: 100vh;
@@ -48,18 +50,38 @@ html {
  display: flex;
  justify-content: center;
 }
-
-.projects-div {
- width: 1280px;
+#projects-div {
+ width: 1400px;
+ display:flex;
+ justify-content: center;
+}
+#projects-grid {
+ width: 1400px;
  display: flex;
  flex-wrap: wrap;
+ 
 }
 
 .project-tile {
   margin: 2rem;
+  width: 400px;
 }
 
 #contact {
- height: 25vh;
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+ height: 20rem;
  background-color: yellow;
+}
+
+#contact div {
+ display: flex;
+ justify-content: center;
+}
+
+#contact div a {
+ padding: 2rem;
+ font-size: 1.5rem;
 }
