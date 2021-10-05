@@ -2,15 +2,33 @@
  box-sizing: border-box;
  margin: 0;
 }
-
+:root {
+ --main-blue: #3a677a;
+ --main-grey: #28292b;
+ --light-yellow: #f2cf63;
+ --dark-yellow: #c59c4f;
+ --light-grey: #f2f2f2;
+}
+/* Fonts to use 
+font-family: basic-sans, sans-serif;
+font-weight: 200(extralight), 400(regular), 700(bold), 900(black);
+font-style: italic, normal;
+*/
+/* Colors to use
+color:#6593A6(blue) 
+*/
 html {
  font-size: 62.5%;
  scroll-behavior: smooth;
 }
+body {
+ font-family: basic-sans, sans-serif;
+ font-weight: 400;
+}
 
 #navbar {
  width: 100%;
- background-color:aqua;
+ background-color: var(--main-grey);
  position: fixed;
 }
 
@@ -31,14 +49,14 @@ html {
 }
 
 .nav-list a:hover {
- background-color: blue;
+ background-color: var(--main-blue);
 }
 
 a {
  text-decoration: none;
 }
 #welcome-section {
- background-color: rebeccapurple;
+ background-color: var(--main-blue);
  height: 100vh;
  display: flex;
  flex-direction: column;
@@ -47,24 +65,24 @@ a {
 }
 
 #projects {
- display: flex;
- justify-content: center;
+ text-align: center;
+ background-color: var(--light-grey);
 }
+
 #projects-div {
- width: 1400px;
  display:flex;
  justify-content: center;
 }
+
 #projects-grid {
- width: 1400px;
+ max-width: 1200px;
  display: flex;
  flex-wrap: wrap;
- 
+ justify-content: center;
 }
 
 .project-tile {
-  margin: 2rem;
-  width: 400px;
+ margin: 2rem;
 }
 
 #contact {
@@ -73,7 +91,7 @@ a {
  justify-content: center;
  align-items: center;
  height: 20rem;
- background-color: yellow;
+ background-color: var(--dark-yellow);
 }
 
 #contact div {
