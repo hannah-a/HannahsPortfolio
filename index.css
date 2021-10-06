@@ -8,6 +8,11 @@
  --light-yellow: #f2cf63;
  --dark-yellow: #c59c4f;
  --light-grey: #f2f2f2;
+ --main-brown: #0e0500;
+--dark-green: #164929;
+--light-green: #578067;
+--light-grey: #f2f7f7;
+--light-pink: #eed9ea;
 }
 /* Fonts to use 
 font-family: basic-sans, sans-serif;
@@ -15,7 +20,11 @@ font-weight: 200(extralight), 400(regular), 700(bold), 900(black);
 font-style: italic, normal;
 */
 /* Colors to use
-color:#6593A6(blue) 
+--main-brown: #140800;
+--dark-green: #18522C;
+--light-green: #578067;
+--light-grey: #f2f7f7;
+--light-pink: #ebd2e6;
 */
 html {
  font-size: 62.5%;
@@ -24,11 +33,14 @@ html {
 body {
  font-family: basic-sans, sans-serif;
  font-weight: 400;
+ background-color: var(--light-grey);
 }
+
+/*Navigation*/
 
 #navbar {
  width: 100%;
- background-color: var(--main-grey);
+ background-color: var(--main-brown);
  position: fixed;
 }
 
@@ -49,14 +61,16 @@ body {
 }
 
 .nav-list a:hover {
- background-color: var(--main-blue);
+ background-color: var(--dark-green);
 }
 
 a {
  text-decoration: none;
 }
+/*Welcome Section*/
+
 #welcome-section {
- background-color: var(--main-blue);
+ background: linear-gradient(#eed9ea 80%,#f2f7f7);
  height: 100vh;
  display: flex;
  flex-direction: column;
@@ -64,14 +78,41 @@ a {
  align-items: center;
 }
 
+#welcome-section h1 {
+ font-size: 6vw;
+ text-align: center;
+}
+#welcome-section p {
+ font-size: 2vw;
+ text-align: center;
+}
+/*Project*/
+
+.grid {
+ display: grid;
+ grid-template-columns: 1fr 4fr 1fr;
+ grid-template-rows: .5fr 4fr;
+}
+
 #projects {
  text-align: center;
- background-color: var(--light-grey);
+ background-color: var(--light-green);
+}
+
+#project-header {
+ grid-column-start: 2;
+ grid-column-end: 3;
+ grid-row-start: 1;
+ grid-row-end: 2;
 }
 
 #projects-div {
  display:flex;
  justify-content: center;
+ grid-column-start: 2;
+ grid-column-end: 3;
+ grid-row-start: 2;
+ grid-row-end: 3;
 }
 
 #projects-grid {
@@ -85,13 +126,19 @@ a {
  margin: 2rem;
 }
 
+/*Contacts*/
+
 #contact {
  display: flex;
  flex-direction: column;
  justify-content: center;
  align-items: center;
  height: 20rem;
- background-color: var(--dark-yellow);
+ background-color: var(--light-pink);
+}
+
+#contact h2 {
+ padding-bottom: 2rem;
 }
 
 #contact div {
@@ -102,4 +149,10 @@ a {
 #contact div a {
  padding: 2rem;
  font-size: 1.5rem;
+ text-shadow: 2px 2px 1px #1f1f1f;
+ transition: transform 0.3s ease-out;
+}
+
+#contact div a:hover{
+ transform: translateY(8px);
 }
