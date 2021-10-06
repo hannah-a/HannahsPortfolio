@@ -48,6 +48,7 @@ body {
  width: 100%;
  background-color: var(--main-brown);
  position: fixed;
+ z-index: 2;
 }
 
 .nav-list {
@@ -97,12 +98,23 @@ a {
  font-size: 2vw;
  text-align: center;
 }
+#welcome-section i {
+ color: var(--dark-green);
+ padding-top: 3rem;
+ font-size: 5rem;
+ text-shadow: 2px 2px 1px #ffffff;
+ transition: transform 0.3s ease-out;
+}
+
+#welcome-section i:hover {
+ transform: translateY(25px);
+}
 /*Project*/
 
 .grid {
  display: grid;
  grid-template-columns: 1.5fr 4fr 1.5fr;
- grid-template-rows: .5fr 4fr .5fr;
+ grid-template-rows: .5fr 4fr .3fr;
 }
 
 #projects {
@@ -146,10 +158,30 @@ a {
 }
 
 .project-tile {
- margin: 2rem;
+ margin: 2rem 2rem 10rem 2rem;
  max-height: 30rem;
 }
 
+figure {
+ padding-bottom: 4rem;
+ height: 300px;
+}
+figcaption {
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ font-size: 200%;
+ color: white;
+ background: linear-gradient(#ffffff00, #0e0500, #ffffff00 ); 
+ width: 100%;
+ height: 15rem;
+ position: relative;
+ bottom: 8rem;
+ z-index: 1;
+}
+figcaption i {
+ padding-right: 1rem;
+}
 /*Contacts*/
 
 #contact {
@@ -165,7 +197,10 @@ a {
  font-size: 400%;
  padding-bottom: 2rem;
 }
-
+#contact p {
+ font-size: 2rem;
+ padding-bottom: 1.7rem;
+}
 #contact div {
  display: flex;
  justify-content: center;
@@ -183,9 +218,17 @@ a {
  transform: translateY(8px);
 }
 
+#contact i {
+ padding-right: .7rem;
+ font-size: 3rem;
+ position: relative;
+ top: .5rem;
+}
+
 footer {
  text-align: center;
  font-size: 1.5rem;
  color: white;
  background-color: var(--dark-green);
+ padding: 1rem 0;
 }
