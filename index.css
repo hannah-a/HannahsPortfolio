@@ -36,6 +36,12 @@ body {
  background-color: var(--light-grey);
 }
 
+@media (max-width: 1200px) {
+ html{
+  font-size: 60%
+ }
+}
+
 /*Navigation*/
 
 #navbar {
@@ -57,7 +63,12 @@ body {
  display: block;
  color: #f0f0f0;
  padding: 2rem;
- font-size: xx-large;
+ font-size: 2vw;
+}
+@media (max-width: 428px) {
+ .nav-list a {
+  font-size: 7vw;
+ }
 }
 
 .nav-list a:hover {
@@ -90,29 +101,41 @@ a {
 
 .grid {
  display: grid;
- grid-template-columns: 1fr 4fr 1fr;
- grid-template-rows: .5fr 4fr;
+ grid-template-columns: 1.5fr 4fr 1.5fr;
+ grid-template-rows: .5fr 4fr .5fr;
 }
 
 #projects {
  text-align: center;
  background-color: var(--light-green);
 }
-
-#project-header {
- grid-column-start: 2;
- grid-column-end: 3;
- grid-row-start: 1;
- grid-row-end: 2;
+.transparentdiv {
+ width: 100%;
+ height: 100%;
+ background-color: var(--light-grey);
 }
 
+#project-header {
+ grid-column: 2 / 3;
+ grid-row: 1 / 2;
+ color: white;
+ font-size: 7.5rem;
+ padding-top: 8rem;
+ padding-bottom: 8rem;
+ text-shadow: 2px 2px 1px #1f1f1f;
+}
+ @media (max-width: 1018px) {
+  #project-header {
+   padding-top: 9rem;
+   padding-bottom: 0;
+  }
+
+ }
 #projects-div {
  display:flex;
  justify-content: center;
- grid-column-start: 2;
- grid-column-end: 3;
- grid-row-start: 2;
- grid-row-end: 3;
+ grid-column: 2 / 3;
+ grid-row: 2 / 3;
 }
 
 #projects-grid {
@@ -124,6 +147,7 @@ a {
 
 .project-tile {
  margin: 2rem;
+ max-height: 30rem;
 }
 
 /*Contacts*/
@@ -133,11 +157,12 @@ a {
  flex-direction: column;
  justify-content: center;
  align-items: center;
- height: 20rem;
+ height: 60vh;
  background-color: var(--light-pink);
 }
 
 #contact h2 {
+ font-size: 400%;
  padding-bottom: 2rem;
 }
 
@@ -147,12 +172,20 @@ a {
 }
 
 #contact div a {
+ color: var(--main-brown);
  padding: 2rem;
  font-size: 1.5rem;
- text-shadow: 2px 2px 1px #1f1f1f;
+ text-shadow: 2px 2px 1px #ffffff;
  transition: transform 0.3s ease-out;
 }
 
 #contact div a:hover{
  transform: translateY(8px);
+}
+
+footer {
+ text-align: center;
+ font-size: 1.5rem;
+ color: white;
+ background-color: var(--dark-green);
 }
