@@ -1,4 +1,9 @@
-h1 {
+header {
   background-color: blue;
+  color: #fff;
+}
+
+main {
+  background-color: black;
   color: #fff;
 }

@@ -59,3 +59,22 @@ let myCar = {
 
 myCar.numDoors = 4;
 
+const anotherObject = {
+  wordz: ["foo", "bar", "baz"],
+  car: {
+    make: "McLaren",
+    model: "675LT"
+  },
+  awesomeness: true
+};
+
+// Functions
+
+function myFunction() {
+  return "My greeting to you...";
+}
+
+function sumTwoThings(one, two) {
+  // watch out for data type issues here!
+  return one + two; // if numbers, will add them.  If strings, will concatenate.
+}
