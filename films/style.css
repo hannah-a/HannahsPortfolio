@@ -3,7 +3,22 @@ header {
   color: #fff;
 }
 
-main {
+figure { 
   background-color: black;
+}
+
+img {
+  border: 8px solid gold;
+}
+
+figcaption {
   color: #fff;
+  text-align: center;
+  font-size: xx-large;
+}
+
+main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
