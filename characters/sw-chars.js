@@ -2,19 +2,39 @@ import { people } from '../data/people.js'
 
 const main = document.querySelector('#main')
 
-console.log(people.length)
+const maleCharacters = people.filter(person => person.gender === 'male')
+console.log(maleCharacters.length)
+const femaleCharacters = people.filter(person => person.gender === 'female')
+console.log(femaleCharacters.length)
 
-people.forEach((element, index) => {
+const otherCharacters = people.filter(person => {
+  if(person.gender === 'n/a' || person.gender === 'hermaphrodite') {
+    return person
+  }
+})
+
+console.log(otherCharacters)
+
+femaleCharacters.forEach((element) => {
   const personFig = document.createElement('figure')
   const personImg = document.createElement('img')
-  personImg.src = `https://starwars-visualguide.com/assets/img/characters/${
-    index + 1
-  }.jpg`
+  let charNum = getLastNumber(element.url)
+  personImg.src = `https://starwars-visualguide.com/assets/img/characters/${charNum}.jpg`
   const personCaption = document.createElement('figcaption')
-  personCaption.textContent = 'Person name goes here'
+  personCaption.textContent = element.name
 
   personFig.appendChild(personImg)
   personFig.appendChild(personCaption)
 
   main.appendChild(personFig)
+  
 })
+
+function getLastNumber(url) {
+  let end = url.lastIndexOf('/')
+  let start = end - 2
+  if (url.charAt(start) === '/') {
+    start++
+  }
+  return url.slice(start, end)
+}
