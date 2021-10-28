@@ -1,6 +1,28 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+header {
+  display: flex;
+  justify-content: space-around;
+  background-color: gray;
+
+}
+
 main {
   display: flex;
   flex-wrap: wrap;
+}
+
+button {
+  font-size: x-large;
+  background-color: aqua;
+  border-radius: 10px;
+}
+
+button:hover {
+  background-color: bisque;
 }
 
 figure img {
