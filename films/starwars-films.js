@@ -1,20 +1,3 @@
-<<<<<<< HEAD
-import { films } from '../data/films.js'
-
-let filmList = document.querySelector('#filmList')
-
-for (let i = 0; i < films.length; i++) {
-  let figure = document.createElement('figure')
-  let figImg = document.createElement('img')
-  figImg.src = `https://starwars-visualguide.com/assets/img/films/${i + 1}.jpg`
-  let figCaption = document.createElement('figcaption')
-  figCaption.textContent = films[i].title
-  
-  figure.appendChild(figImg)
-  figure.appendChild(figCaption)
-  
-  filmList.appendChild(figure)
-=======
 import { films } from '../data/films.js'
 import { getLastNumber } from '../utils/index.js'
 
@@ -34,5 +17,4 @@ for (let i = 0; i < films.length; i++) {
   figure.appendChild(figCaption)
   
   filmList.appendChild(figure)
->>>>>>> e51791b150161c35d0109a2c329122aed2db395b
  }

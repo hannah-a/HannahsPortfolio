@@ -1,0 +1,129 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+:root {
+    --main-blue: #3a677a;
+    --main-grey: #28292b;
+    --light-yellow: #f2cf63;
+    --dark-yellow: #c59c4f;
+    --light-grey: #f2f2f2;
+    --main-brown: #0e0500;
+   --dark-green: #164929;
+   --light-green: #578067;
+   --light-grey: #f2f7f7;
+   --light-pink: #eed9ea;
+}
+   /* Fonts to use 
+   font-family: basic-sans, sans-serif;
+   font-weight: 200(extralight), 400(regular), 700(bold), 900(black);
+   font-style: italic, normal;
+   */
+   /* Colors to use
+   --main-brown: #140800;
+   --dark-green: #18522C;
+   --light-green: #578067;
+   --light-grey: #f2f7f7;
+   --light-pink: #ebd2e6;
+   */
+html {
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+}
+body {
+    font-family: basic-sans, sans-serif;
+    font-weight: 400;
+    background-color: var(--light-grey);
+}
+   
+@media (max-width: 1200px) {
+    html{
+     font-size: 60%
+    }
+}
+/* Navigation */
+#navbar {
+    width: 100%;
+    background-color: var(--main-brown);
+    position: fixed;
+    z-index: 2;
+}
+   
+.nav-list {
+    display: flex;
+    justify-content: flex-end;
+    list-style-type: none;
+    margin-right: 1rem;
+}
+.navname {
+    position: relative;
+    right: 50vw;
+}
+.nav-list a {
+    display: block;
+    color: #f0f0f0;
+    padding: 2rem;
+    font-size: 2vw;
+}
+@media (max-width: 428px) {
+    .nav-list a {
+     font-size: 7vw;
+    }
+}
+   
+.nav-list a:hover {
+    background-color: var(--dark-green);
+}
+a {
+    text-decoration: none;
+}
+/* footer */
+
+#contact {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 60vh;
+    background-color: var(--light-pink);
+   }
+   
+   #contact h2 {
+    font-size: 400%;
+    padding-bottom: 2rem;
+   }
+   #contact p {
+    font-size: 2rem;
+    padding-bottom: 1.7rem;
+   }
+   #contact div {
+    display: flex;
+    justify-content: center;
+   }
+   
+   #contact div a {
+    color: var(--main-brown);
+    padding: 2rem;
+    font-size: 1.5rem;
+    text-shadow: 2px 2px 1px #ffffff;
+    transition: transform 0.3s ease-out;
+   }
+   
+   #contact div a:hover{
+    transform: translateY(8px);
+   }
+   
+   #contact i {
+    padding-right: .7rem;
+    font-size: 3rem;
+    position: relative;
+    top: .5rem;
+   }
+   
+   footer {
+    text-align: center;
+    font-size: 1.5rem;
+    color: rgb(0, 0, 0);
+    background-color: var(--dark-green);
+    padding: 1rem 0;
+   }
