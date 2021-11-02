@@ -1,0 +1,38 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+header, footer {
+font-family: 'Rock Salt', cursive;
+font-size: xx-large;
+text-align: center;
+}
+
+.mainContainer{
+  display: flex;
+  
+}
+
+.nav {
+  margin-left: 2em;
+}
+
+section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.box {
+  background-color: aqua;
+  font-size: xx-large;
+  text-align: center;
+}
+
+.shipName {
+  font-size: xx-large;
+  color:blue;
+}
