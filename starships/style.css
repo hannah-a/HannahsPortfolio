@@ -77,6 +77,26 @@ body {
 a {
     text-decoration: none;
 }
+/* Main Container */
+
+.mainContainer {
+    display: flex;
+    background-color: red;
+}
+
+.shipViewer {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    align-items: center;
+}
+
+
+
+
+
+
+
 /* footer */
 
 #contact {
@@ -86,44 +106,45 @@ a {
     align-items: center;
     height: 60vh;
     background-color: var(--light-pink);
-   }
+}
    
-   #contact h2 {
+#contact h2 {
     font-size: 400%;
     padding-bottom: 2rem;
-   }
-   #contact p {
+}
+#contact p {
     font-size: 2rem;
     padding-bottom: 1.7rem;
-   }
-   #contact div {
+}
+#contact div {
     display: flex;
     justify-content: center;
-   }
+}
    
-   #contact div a {
+#contact div a {
     color: var(--main-brown);
     padding: 2rem;
     font-size: 1.5rem;
     text-shadow: 2px 2px 1px #ffffff;
     transition: transform 0.3s ease-out;
-   }
+}
    
-   #contact div a:hover{
+#contact div a:hover{
     transform: translateY(8px);
-   }
+}
    
-   #contact i {
+#contact i {
     padding-right: .7rem;
     font-size: 3rem;
     position: relative;
     top: .5rem;
-   }
+}
    
-   footer {
+footer {
     text-align: center;
     font-size: 1.5rem;
     color: rgb(0, 0, 0);
     background-color: var(--dark-green);
     padding: 1rem 0;
-   }
+}
+
