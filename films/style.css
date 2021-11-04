@@ -29,9 +29,10 @@
    font-size: 60%
   }
 }
-header {
-  background-color: blue;
-  color: #fff;
+h1 {
+  font-size: 8vw;
+  padding: 20vw 4vw 0 4vw;
+  color: var(--light-yellow);
 }
 
 figure { 
@@ -54,6 +55,7 @@ main {
   justify-content: center;
 }
 
+
 /* Navigation */
 
 #navbar {
@@ -65,14 +67,11 @@ main {
 
  .nav-list {
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
   list-style-type: none;
   margin-right: 1rem;
 }
-.navname {
-  position: relative;
-  right: 50vw;
-}
+
  .nav-list a {
   display: block;
   color: #f0f0f0;
@@ -91,4 +90,55 @@ main {
  
  a {
   text-decoration: none;
+}
+
+/* Footer */
+
+#contact {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
+  background-color: var(--light-pink);
+}
+ 
+#contact h2 {
+  font-size: 4vw;
+  padding-bottom: 2rem;
+}
+#contact p {
+  font-size: 2rem;
+  padding-bottom: 1.7rem;
+}
+#contact div {
+  display: flex;
+  justify-content: center;
+}
+ 
+#contact div a {
+  color: var(--main-brown);
+  padding: 2rem;
+  font-size: 1.5rem;
+  text-shadow: 2px 2px 1px #ffffff;
+  transition: transform 0.3s ease-out;
+}
+ 
+#contact div a:hover{
+  transform: translateY(8px);
+}
+ 
+#contact i {
+  padding-right: .7rem;
+  font-size: 3rem;
+  position: relative;
+  top: .5rem;
+}
+ 
+footer {
+  text-align: center;
+  font-size: 1.5rem;
+  color: white;
+  background-color: var(--dark-green);
+  padding: 1rem 0;
 }

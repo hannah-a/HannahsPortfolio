@@ -33,7 +33,7 @@
  body {
   font-family: basic-sans, sans-serif;
   font-weight: 400;
-  background-color: var(--light-grey);
+  background-color: var(--main-grey);
 }
  
  @media (max-width: 1200px) {
@@ -41,17 +41,26 @@
    font-size: 60%
   }
 }
+main {
+  padding: 0 4vw;
+}
 
+h1 {
+  font-size: 8vw;
+  padding: 20vw 4vw 0 4vw;
+  color: var(--light-yellow);
+}
 header {
   display: flex;
   justify-content: space-around;
-  background-color: gray;
-  padding: 2em 0;
+  background-color: var(--main-blue);
+  padding: 2em 4vw;
 }
 
 button {
+  font-family: basic-sans;
   font-size: x-large;
-  background-color: rgb(75, 13, 72);
+  background-color: var(--light-grey);
   border-radius: 10px;
 }
 
@@ -60,6 +69,7 @@ button:hover {
 }
 
 main {
+  margin-top: 12rem;
   display: flex;
   flex-wrap: wrap;
 }
@@ -78,33 +88,81 @@ figure img {
   position: fixed;
   z-index: 2;
 }
- 
- .nav-list {
+
+.nav-list {
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
   list-style-type: none;
   margin-right: 1rem;
 }
-.navname {
-  position: relative;
-  right: 50vw;
-}
- .nav-list a {
+
+.nav-list a {
   display: block;
   color: #f0f0f0;
   padding: 2rem;
   font-size: 2vw;
 }
+
  @media (max-width: 428px) {
   .nav-list a {
    font-size: 7vw;
   }
 }
  
- .nav-list a:hover {
-  background-color: var(--dark-green);
+.nav-list a:hover {
+  background-color: var(--main-blue);
 }
  
- a {
+a {
   text-decoration: none;
+}
+
+/* Footer Styles */
+#contact {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
+  background-color: var(--light-yellow);
+}
+ 
+#contact h2 {
+  font-size: 4vw;
+  padding-bottom: 2rem;
+}
+#contact p {
+  font-size: 2rem;
+  padding-bottom: 1.7rem;
+}
+#contact div {
+  display: flex;
+  justify-content: center;
+}
+ 
+#contact div a {
+  color: var(--main-brown);
+  padding: 2rem;
+  font-size: 1.5rem;
+  text-shadow: 2px 2px 1px #ffffff;
+  transition: transform 0.3s ease-out;
+}
+ 
+#contact div a:hover{
+  transform: translateY(8px);
+}
+ 
+#contact i {
+  padding-right: .7rem;
+  font-size: 3rem;
+  position: relative;
+  top: .5rem;
+}
+ 
+footer {
+  text-align: center;
+  font-size: 1.5rem;
+  color: white;
+  background-color: var(--main-blue);
+  padding: 1rem 0;
 }

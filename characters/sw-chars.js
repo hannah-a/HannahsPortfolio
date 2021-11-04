@@ -41,7 +41,6 @@ const otherCharacters = people.filter((person) => {
 })
 
 function populateDOM(characters) {
-  // remove all the previous items before populating with new ones
   removeChildren(main)
   
   characters.forEach((element) => {

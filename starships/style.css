@@ -51,14 +51,11 @@ body {
    
 .nav-list {
     display: flex;
-    justify-content: flex-end;
+    justify-content: flex-start;
     list-style-type: none;
     margin-right: 1rem;
 }
-.navname {
-    position: relative;
-    right: 50vw;
-}
+
 .nav-list a {
     display: block;
     color: #f0f0f0;
@@ -109,7 +106,7 @@ a {
 }
    
 #contact h2 {
-    font-size: 400%;
+    font-size: 4vw;
     padding-bottom: 2rem;
 }
 #contact p {
