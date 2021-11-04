@@ -30,17 +30,20 @@
   }
 }
 h1 {
-  font-size: 8vw;
-  padding: 20vw 4vw 0 4vw;
+  font-size: 10vh;
+  padding: 15vw 6vw 0 2vw;
   color: var(--light-yellow);
+  text-align: center;
 }
 
 figure { 
   background-color: black;
+  width: 100%;
+  margin: 0 4vw;
 }
 
 img {
-  border: 8px solid aqua;
+  width: 40rem;
 }
 
 figcaption {
@@ -49,12 +52,18 @@ figcaption {
   font-size: xx-large;
 }
 
-main {
+.filmBox {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
+  padding: 8vw 4vw;
 }
-
+#filmList {
+  overflow-x: scroll;
+  white-space: nowrap;
+  width: 75%;
+  height: 80%;
+  display: flex;
+}
 
 /* Navigation */
 
@@ -85,7 +94,7 @@ main {
 }
  
  .nav-list a:hover {
-  background-color: var(--dark-green);
+  background-color: var(--main-blue);
 }
  
  a {
@@ -100,7 +109,7 @@ main {
   justify-content: center;
   align-items: center;
   height: 60vh;
-  background-color: var(--light-pink);
+  background-color: var(--main-blue);
 }
  
 #contact h2 {
@@ -117,10 +126,10 @@ main {
 }
  
 #contact div a {
-  color: var(--main-brown);
+  color: var(--light-yellow);
   padding: 2rem;
   font-size: 1.5rem;
-  text-shadow: 2px 2px 1px #ffffff;
+  text-shadow: 2px 2px 1px var(--main-grey);
   transition: transform 0.3s ease-out;
 }
  
@@ -139,6 +148,6 @@ footer {
   text-align: center;
   font-size: 1.5rem;
   color: white;
-  background-color: var(--dark-green);
+  background-color: var(--main-grey);
   padding: 1rem 0;
 }
