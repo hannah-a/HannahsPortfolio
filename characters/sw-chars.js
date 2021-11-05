@@ -2,14 +2,11 @@ import { people } from '../data/people.js'
 import { getLastNumber, removeChildren } from '../utils/index.js'
 
 const main = document.querySelector('#main')
-
+const everyThing = document.querySelector('.EverythingContainer')
 const mainHeader = document.createElement('header')
-document.body.insertBefore(mainHeader, main)
+everyThing.insertBefore(mainHeader, main)
+// node.insertBefore(newnode, existingnode). newnode= the node object you want to insert, existingnode= the child node you want to insert the new node before.
 
-const allButton = document.createElement('button')
-allButton.textContent = 'All Characters'
-allButton.addEventListener('click', () => populateDOM(people))
-mainHeader.appendChild(allButton)
 
 const maleButton = document.createElement('button')
 maleButton.textContent = 'Male Characters'

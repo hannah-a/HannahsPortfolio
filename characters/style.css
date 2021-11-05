@@ -41,25 +41,58 @@
    font-size: 60%
   }
 }
-main {
-  padding: 0 4vw;
+
+.EverythingContainer {
+  display: grid;
+  grid-template-columns: 50vw 50vw;
+  grid-template-rows: 80vh 20vh;
+  grid-template-areas:
+  "Title Characters"
+  "buttons main"
 }
 
-h1 {
-  font-size: 8vw;
-  padding: 20vw 4vw 0 4vw;
-  color: var(--light-yellow);
+
+main {
+  justify-self: center;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 3;
+  padding: 0 4vw;
+  margin: 12rem 0 6rem 0;
+  overflow-y: scroll;
+  white-space: nowrap;
+ 
 }
+main::-webkit-scrollbar {
+  background: black;
+  border-radius: 100px;
+  width: 6px;
+  box-shadow: 2px 2px 2px inset rgb(27, 27, 27);
+ 
+}
+main::-webkit-scrollbar-thumb {
+  background-image: linear-gradient(180deg, #ff0000 0%, #0044ff 99%);
+  border-radius: 100px;
+}
+ 
+h1 {
+  grid-area: Title;
+  font-size: 10vh;
+  padding: 16vw 6vw 0 2vw;
+  color: var(--light-yellow);
+  text-align: center;
+}
+
 header {
-  display: flex;
-  justify-content: space-around;
+  grid-area: buttons;
   background-color: var(--main-blue);
-  padding: 2em 4vw;
+
 }
 
 button {
   font-family: basic-sans;
-  font-size: x-large;
+  font-size: medium;
   background-color: var(--light-grey);
   border-radius: 10px;
 }
@@ -68,18 +101,13 @@ button:hover {
   background-color: bisque;
 }
 
-main {
-  margin-top: 12rem;
-  display: flex;
-  flex-wrap: wrap;
-}
 
 figure {
   margin: 8px;
 }
 
 figure img {
-  width: 200px;
+  width: 25vw;
 }
 /* Navigation */
 #navbar {
