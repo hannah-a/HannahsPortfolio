@@ -103,7 +103,7 @@ a {
  color: var(--dark-green);
  padding-top: 3rem;
  font-size: 5rem;
- transition: transform 0.3s ease-out;
+ 
 }
 
 #welcome-section i:hover {
