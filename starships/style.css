@@ -78,7 +78,7 @@ a {
 
 .mainContainer {
     display: flex;
-    background-color: red;
+    background-color: var(--light-grey);
 }
 
 .shipViewer {

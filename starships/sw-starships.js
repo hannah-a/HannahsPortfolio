@@ -28,7 +28,7 @@ function populateNav() {
     navList.appendChild(anchorWrap)
   })
 }
-
+// Makes the list 
 populateNav()
 
 function populateShipView(shipData) {
@@ -48,3 +48,35 @@ function populateShipView(shipData) {
   shipView.appendChild(shipImage)
   shipView.appendChild(shipName)
 }
+
+/* tryna make a random button 
+
+const randomButton = document.querySelector('#random')
+ randomButton.addEventListener('click', () => randomImage(lastNumber))
+
+s
+
+using map function
+const senatorDiv = document.querySelectors('.senators')
+function simplifiedSenators(senatorArray) {
+    const middleName = senator.middle_name ? ` ${senator.middle_name} `: " "
+    // mdn on falsey on truthy. a truthy value in a boolean context, all values are truethy unless falsey. falsey, specific parts of the javascript langues, 0 , -0, empty strings ""'` null, undefined, NaN
+    return senatorArray.map(senator => {
+        return {
+            id: senator.id,
+            name: `${senator.first_name}${middleName}${senator.last_name}`,
+            party: senator.party
+        }
+    })
+}
+
+
+function randomImage(ships) {
+  return ships.map(ship => {
+    return {
+      shipImage: 
+    }
+  })
+
+}
+*/
