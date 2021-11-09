@@ -36,3 +36,16 @@ section {
   font-size: xx-large;
   color:blue;
 }
+
+a {
+  font-size: x-large;
+  color: #333;
+}
+
+li:hover {
+  background-color: bisque;
+}
+
+a li {
+  background-color: #ddd;
+} 
