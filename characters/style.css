@@ -69,7 +69,7 @@ main {
 main::-webkit-scrollbar {
   background: black;
   border-radius: 100px;
-  width: 6px;
+  width: 10px;
   box-shadow: 2px 2px 2px inset rgb(27, 27, 27);
  
 }
@@ -89,16 +89,20 @@ h1 {
 
 header {
   grid-area: buttons;
-  
+  display: flex;
+  align-content: center;
+  flex-direction: column;
 
 }
 
 button {
   font-family: basic-sans;
   font-size: medium;
-  background: rgb(255,255,255);
-background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,0,0,1) 16%, rgba(255,0,0,1) 84%, rgba(255,255,255,1) 100%);
+  padding: 1rem;
+  background-color: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(255,255,255,1) 100%);
   border-radius: 10px;
+  height: 8rem;
+  
 }
 
 button:hover {

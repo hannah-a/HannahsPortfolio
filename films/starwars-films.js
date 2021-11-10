@@ -10,6 +10,7 @@ for (let i = 0; i < films.length; i++) {
   let figCaption = document.createElement('figcaption')
 
   const foundFilm = films.find(film => getLastNumber(film.url) === (i + 1).toString())
+  // finds url of film and matches it to be able to get the title below
 
   figCaption.textContent = foundFilm.title
   

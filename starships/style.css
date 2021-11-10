@@ -1,6 +1,7 @@
 * {
     box-sizing: border-box;
     margin: 0;
+
 }
 :root {
     --main-blue: #3a677a;
@@ -71,14 +72,33 @@ body {
 .nav-list a:hover {
     background-color: var(--dark-green);
 }
+
 a {
     text-decoration: none;
 }
-/* Main Container */
+/* h1andrandom */
 
+.h1andrandom {
+    padding-top: 10vh; /*TEST*/
+
+}
+
+.starShips {
+    padding: 10vw 6vw 0 2vw;
+    font-size: 10vh;
+}
+
+
+
+
+
+
+
+/* Main Container */
 .mainContainer {
     display: flex;
     background-color: var(--light-grey);
+    padding: 0 0 0 2vw;
 }
 
 .shipViewer {
@@ -88,7 +108,10 @@ a {
     align-items: center;
 }
 
+a {
+    font-family: basic-sans;
 
+}
 
 
 

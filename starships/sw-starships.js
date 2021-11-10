@@ -51,10 +51,25 @@ function populateShipView(shipData) {
 
 /* tryna make a random button 
 
+Okay so if I create an array, using the getlastnumber function, I'll get all the numbers of the images, calling it shipRandomArray
+Then I make a click event that will call the function 
+then I need a math random function that if the random number generated is === to the number in the array it will return the image and title, along with removeChildren. I will name it randomShipSelector.
+
+So the button will click and it will execute the randomShipSelector function which will have shipRandomArray passed into it. 
+
+const shipRandomArray = (shipData) {
+  let shipImage = document.createElement('img)
+}
+
+
+
+
+
+
 const randomButton = document.querySelector('#random')
  randomButton.addEventListener('click', () => randomImage(lastNumber))
 
-s
+Mathfloor(math.random() * myarray)
 
 using map function
 const senatorDiv = document.querySelectors('.senators')
