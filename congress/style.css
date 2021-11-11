@@ -10,5 +10,12 @@
 
 figure {
   width: 160px;
-  height: 200px;
+  display: flex;
+  flex-direction: column;
+  margin: 1em;
 }
+
+figcaption {
+  text-align: center;
+}
+
