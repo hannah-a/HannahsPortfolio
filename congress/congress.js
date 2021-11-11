@@ -13,7 +13,7 @@ function simplifiedSenators(senatorArray) {
             party: senator.party,
             imgUrl: `https://www.govtrack.us/static/legislator-photos/${senator.govtrack_id}-100px.jpeg`,
             gender: senator.gender,
-            seniority: senator.seniority,
+            seniority: +senator.seniority 
 
         }
     })
@@ -47,3 +47,7 @@ const republicans = filterSenators('party','R')
 const femaleSenators = filterSenators('gender','F')
 
 console.log(femaleSenators) //console log two things put a comma
+
+const mostSeniorSenator = simplifiedSenators().reduce((acc, senator) => {
+    return acc.seniority > senator.seniority ? :
+}
