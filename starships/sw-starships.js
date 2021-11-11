@@ -69,8 +69,15 @@ const shipRandomArray = (shipData) {
 const randomButton = document.querySelector('#random')
  randomButton.addEventListener('click', () => randomImage(lastNumber))
 
-Mathfloor(math.random() * myarray)
+Math.floor(math.random() * shipRandomArray.length)
 
+function randomRange(myMin=0, myMax=40) {
+  return Math.floor(Math.random() * (myMax - myMin + 1) + myMin);
+}
+
+using default inside a functions paremeters
+
+const randomBottom 
 using map function
 const senatorDiv = document.querySelectors('.senators')
 function simplifiedSenators(senatorArray) {
@@ -94,4 +101,7 @@ function randomImage(ships) {
   })
 
 }
+
+
+use an if else statement?
 */
