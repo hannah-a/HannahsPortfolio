@@ -45,8 +45,8 @@ function populateShipView(shipData) {
     modal.classList.toggle('is-active')
     shipMessage.textContent = `The ship known as "${shipData.name}" has been canceled.`
   })
-  shipView.appendChild(shipImage)
   shipView.appendChild(shipName)
+  shipView.appendChild(shipImage)
 }
 
 /* tryna make a random button 

@@ -4,7 +4,7 @@
 }
  :root {
   --main-blue: #3a677a;
-  --main-grey: #28292b;
+  --main-grey: #1d1d1f;
   --light-yellow: #f2cf63;
   --dark-yellow: #c59c4f;
   --light-grey: #f2f2f2;
@@ -43,7 +43,7 @@
 }
 
 .EverythingContainer {
-  background-color: white;
+  background-color: var(--main-grey);
   display: grid;
   grid-template-columns: 50vw 50vw;
   grid-template-rows: 80vh 20vh;
@@ -63,7 +63,6 @@ main {
   margin: 12rem 0 6rem 0;
   overflow-y: scroll;
   white-space: nowrap;
-  background: rgb(255,255,255);
  
 }
 main::-webkit-scrollbar {
@@ -81,7 +80,7 @@ main::-webkit-scrollbar-thumb {
 h1 {
   grid-area: Title;
   font-size: 10vh;
-  padding: 16vw 6vw 0 2vw;
+  padding: 16vw 2vw 0 2vw;
   color: var(--light-yellow);
   text-shadow: 0px 6px 8px black;
   text-align: center;
@@ -90,23 +89,25 @@ h1 {
 header {
   grid-area: buttons;
   display: flex;
-  align-content: center;
   flex-direction: column;
-
+  align-items: center;
+  position: relative;
+  bottom: 10vh;
 }
 
 button {
   font-family: basic-sans;
   font-size: medium;
+  font-weight: 900;
   padding: 1rem;
   background-color: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(255,255,255,1) 100%);
-  border-radius: 10px;
+  border-radius: 40px;
   height: 8rem;
-  
+  width: 50%;
 }
 
 button:hover {
-  background-color: bisque; /*what if I like bique*/
+  background-image: linear-gradient(180deg, #ff0000 0%, #0044ff 99%);
 }
 
 
@@ -115,7 +116,7 @@ figure {
 }
 
 figure img {
-  
+  border-radius: 10px;
   width: 0 auto;
 }
 
@@ -124,6 +125,9 @@ figcaption {
   color: white;
   text-align: center;
   font-size: 3rem;
+  font-weight: 900;
+  position: relative;
+  bottom: 60px;
 }
 /* Navigation */
 #navbar {
