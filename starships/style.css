@@ -76,6 +76,7 @@ body {
 a {
     text-decoration: none;
 }
+
 /* h1andrandom */
 
 .h1andrandom {
@@ -86,6 +87,7 @@ a {
 .starShips {
     padding: 10vw 6vw 0 2vw;
     font-size: 10vh;
+    font-weight: 700;
 }
 
 
@@ -104,6 +106,7 @@ a {
 .shipViewer {
     display: flex;
     justify-content: center;
+    flex-direction: column;
     width: 100%;
     align-items: center;
 }
@@ -165,6 +168,6 @@ footer {
     font-size: 1.5rem;
     color: rgb(0, 0, 0);
     background-color: var(--dark-green);
-    padding: 1rem 0;
+    padding: 0rem 0;
 }
 
