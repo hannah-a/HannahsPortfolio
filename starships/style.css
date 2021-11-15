@@ -81,7 +81,7 @@ a {
 */
 
 .starShips {
-    padding: 10vw 6vw 0 2vw;
+    padding: 10vw 6vw 2vh 2vw;
     font-size: 10vh;
     font-weight: 700;
 }
@@ -96,12 +96,13 @@ a {
 .mainContainer {
     display: flex;
     background-color: var(--light-grey);
-    padding: 0 0 0 2vw;
+    padding: 0 0 6vh 2vw;
 }
 .nav {
     overflow-y: scroll;
     white-space: nowrap;
     height: 400px;
+    width: 25vw;
 }
 
 .navList {
@@ -122,8 +123,24 @@ img {
     border-radius: 10px;
 }
 
+.shipName {
+    font-size: 3rem;
+    text-align: center;
+    padding: 2vw;
+}
 
-
+.nav::-webkit-scrollbar {
+    background: black;
+    border-radius: 100px;
+    width: 10px;
+    box-shadow: 2px 2px 2px inset rgb(27, 27, 27);
+   
+  }
+.nav::-webkit-scrollbar-thumb {
+    background-image: linear-gradient(180deg, #ff0000 0%, #0044ff 99%);
+    border-radius: 100px;
+  }
+   
 
 /* footer */
 
