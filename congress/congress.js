@@ -1,8 +1,11 @@
 import { senators } from '../data/senators.js'
+import { representatives } from '../data/representatives.js'
+
+const members = [...senators, ...representatives] //combined senators and represenatives
 
 const senatorDiv = document.querySelector('.senators')
-
-function simplifiedSenators(senatorArray) {
+//11/15 changed to simplifiedMembers
+function simplifiedMembers(senatorArray) {
 //function 
     // mdn on falsey on truthy. a truthy value in a boolean context, all values are truethy unless falsey. falsey, specific parts of the javascript langues, 0 , -0, empty strings ""'` null, undefined, NaN
     return senatorArray.map(senator => {
@@ -51,3 +54,6 @@ console.log(femaleSenators) //console log two things put a comma
 const mostSeniorSenator = simplifiedSenators().reduce((acc, senator) => {
     return acc.seniority > senator.seniority ? :
 }
+
+
+const biggestWeasel = simplifiedSenators().reduce((acc, senator) => (acc.missedVotesPct || 0))
