@@ -1,0 +1,5 @@
+Use at least one example each of the JavaScript Array methods map(), filter(), and reduce() to extract data from a source such as senators.js or representatives.js
+Present the information you have extracted in a well-designed UI.
+Ensure any image loading errors are handled gracefully for your users.
+Demonstrate your ability to use a Modal or Dialog component from a popular CSS framework such as Bulma.
+Hook up Netlify to your GitHub repo and submit your GitHub and your Netlify deployed site URL.
