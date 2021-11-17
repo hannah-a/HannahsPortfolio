@@ -5,7 +5,8 @@ const members = [...senators, ...representatives] //combined senators and repres
 
 const senatorDiv = document.querySelector('.senators')
 //11/15 changed to simplifiedMembers
-function simplifiedMembers(senatorArray) {
+function simplifiedMembers(chamberFilter) {
+    
 //function 
     // mdn on falsey on truthy. a truthy value in a boolean context, all values are truethy unless falsey. falsey, specific parts of the javascript langues, 0 , -0, empty strings ""'` null, undefined, NaN
     return senatorArray.map(senator => {
