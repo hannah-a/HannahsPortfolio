@@ -126,3 +126,14 @@ const rebels = pilots.filter((pilot) => pilot.faction === "Rebels")
 const empire = pilots.filter((pilot) => {
   return pilot.faction === "Empire"
 })
+/*
+map will run a function on every element in an array and return an array of the results, convert each item into a new one. 
+
+const newArray = existingArray.map(function( single argument, string or element value, second argument index, third argument array shows the entire array) {
+  return value + "!" + thisArg, this.name;
+}, thisArg can pass object into the map method {name:};);
+
+filter allows you to filter out any element that doesn't fit the criteria
+
+reduce allows you to reduce down an array into a singular value, typically a number or a string. 
+
