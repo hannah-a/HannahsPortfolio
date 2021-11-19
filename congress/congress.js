@@ -24,7 +24,7 @@ function simplifiedMembers(chamberFilter) {
     }
   })
 }
-console.log(simplifiedMembers())
+
 populateSenatorDiv(simplifiedMembers())
 
 function populateSenatorDiv(simpleSenators) {

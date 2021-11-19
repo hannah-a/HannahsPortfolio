@@ -9,7 +9,7 @@ async function getAPIData(url) {
     }
 }
 
-getAPIData('')// pass in a url, calling API data, gets data in return
+getAPIData(`https://pokeapi.co/api/v2/pokemon/snorlax`)// pass in a url, calling API data, gets data in return
 .then((data) => {
     console.log(data)
     populatePokeCards(data)
