@@ -3,42 +3,47 @@ import { representatives } from '../data/representatives.js'
 
 const members = [...senators, ...representatives] // modern combining arrays like a genus
 
-const senatorDiv = document.querySelector('.senators')
+const memberDiv = document.querySelector('.members')
 const seniorityHeading = document.querySelector('.seniority')
 const weaselOrderedList = document.querySelector('.weaselList')
 
-function simplifiedMembers(chamberFilter) {
-  const filteredArray = members.filter(member => chamberFilter ? member.short_title === chamberFilter : member)
+function simplifiedMembers(chamberFilter/*naming the argument*/) {
+  const filteredArray = members.filter(member/*naming the array element*/ => chamberFilter ? member.short_title === chamberFilter : member)
+  /*a condition followed by a question mark (?), then an expression to execute if the condition is truthy followed by a colon (:), and finally the expression to execute if the condition is falsy.*/
 
-  return filteredArray.map(senator => {
-    const middleName = senator.middle_name ? ` ${senator.middle_name} ` : ` `
+  return filteredArray.map(member => {
+    const middleName = member.middle_name ? ` ${member.middle_name} ` : ` `
     return {
-      id: senator.id,
-      name: `${senator.first_name}${middleName}${senator.last_name}`,
-      party: senator.party,
-      imgURL: `https://www.govtrack.us/static/legislator-photos/${senator.govtrack_id}-100px.jpeg`,
-      gender: senator.gender,
-      seniority: +senator.seniority,
-      missedVotesPct: senator.missed_votes_pct,
-      loyaltyPct: senator.votes_with_party_pct,
+      id: member.id,
+      name: `${member.first_name}${middleName}${member.last_name} (${member.party})`,
+      short_title: member.short_title,
+      party: member.party,
+      imgURL: `https://www.govtrack.us/static/legislator-photos/${member.govtrack_id}-100px.jpeg`,
+      gender: member.gender,
+      seniority: +member.seniority,
+      missedVotesPct: member.missed_votes_pct,
+      loyaltyPct: member.votes_with_party_pct,
+      state: member.state
     }
   })
 }
 
-populateSenatorDiv(simplifiedMembers())
+populateMemberDiv(simplifiedMembers('Rep.'))//create a button with them
 
-function populateSenatorDiv(simpleSenators) {
-  simpleSenators.forEach(senator => {
-    let senFigure = document.createElement('figure')
+console.log(simplifiedMembers('Rep.'))
+
+function populateMemberDiv(memberProfile) {
+  memberProfile.forEach(member => {
+    let memFigure = document.createElement('figure')
     let figImg = document.createElement('img')
     let figCaption = document.createElement('figcaption')
+    
+    figImg.src = member.imgURL
 
-    figImg.src = senator.imgURL
-
-    figCaption.textContent = senator.name
-    senFigure.appendChild(figImg)
-    senFigure.appendChild(figCaption)
-    senatorDiv.appendChild(senFigure)
+    figCaption.textContent = `${member.short_title} ${member.name}`
+    memFigure.appendChild(figImg)
+    memFigure.appendChild(figCaption)
+    memberDiv.appendChild(memFigure)
   })
 }
 
@@ -67,7 +72,6 @@ const biggestWeasel = simplifiedMembers().reduce((acc, senator) =>
 
 const biggestWeasels = simplifiedMembers().filter(senator => senator.missedVotesPct >= 50)
 
-console.log(biggestWeasels)
 
 biggestWeasels.forEach(weasel => {
   let listItem = document.createElement('li')
@@ -94,10 +98,10 @@ function simplifiedMembers(chamberFilter) {
     })
 }
 // coding isn't about creating a finished function at the get go, I'm not that good yet, so it's going to be a building process 
-populateSenatorDiv(simplifiedSenators(senators))
+populateMemberDiv(simplifiedSenators(senators))
 
 
-function populateSenatorDiv(simpleSenators) {
+function populateMemberDiv(simpleSenators) {
     simpleSenators.forEach(senator => {
         let senFigure = document.createElement('figure')
         let figImg = document.createElement('img')

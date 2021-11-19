@@ -258,3 +258,38 @@ const totalJediScoreReduce = personnel.reduce(
       : acc,
   0
 );
+
+
+/* 11/19/2021
+Pass by reference VS. pass by value
+
+Value
+number, string, boolean, nan, null passing by value, setting the variable by value. 
+let a = 10;  Javascript will copy 10 into the value of the variable a. 
+
+let c = a; 
+c = c + 1; 
+  c does not reference a, so only c will be updated.
+c = 11;
+a = 10;
+
+Reference
+object and arrays and classes are stored by reference
+
+let c = [1,2]; the value of c is actually just a memory address somewhere in the computer <0X01> = [1,2].
+when you call c you will get the value at the address, [1,2], but the variable is only storing the reference. 
+
+let d = c; d = <0x01> both c and d point to the same piece of memory. 
+
+d.push(3); will change both c and d.
+
+set d to a new variable
+
+d = [3,4,5]; d = 0X02, overiding the value of d, now c and d are completely different values. 
+
+
+let c = [1,2] // 0x01   c===d is false
+let d = [1,2] // 0x02
+
+let c = d // c===d is true
+ */
