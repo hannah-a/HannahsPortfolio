@@ -1,11 +1,11 @@
 import { senators } from '../data/senators.js'
 import { representatives } from '../data/representatives.js'
+import { removeChildren } from '../utils/index.js'
 
 const members = [...senators, ...representatives] // modern combining arrays like a genus
 
 const memberDiv = document.querySelector('.members')
-const seniorityHeading = document.querySelector('.seniority')
-const weaselOrderedList = document.querySelector('.weaselList')
+const buttonDiv = document.querySelector('.buttons')
 
 function simplifiedMembers(chamberFilter/*naming the argument*/) {
   const filteredArray = members.filter(member/*naming the array element*/ => chamberFilter ? member.short_title === chamberFilter : member)
@@ -28,11 +28,25 @@ function simplifiedMembers(chamberFilter/*naming the argument*/) {
   })
 }
 
-populateMemberDiv(simplifiedMembers('Rep.'))//create a button with them
 
-console.log(simplifiedMembers('Rep.'))
+//WORKING BUTTONS
+
+const representativeButton = document.createElement('button')
+representativeButton.textContent = 'rep button works'
+representativeButton.addEventListener('click', () => 
+  populateMemberDiv(simplifiedMembers('Rep.'))
+)
+buttonDiv.appendChild(representativeButton)
+
+const senatorButton = document.createElement('button')
+senatorButton.textContent = 'sen button works'
+senatorButton.addEventListener('click', () => 
+  populateMemberDiv(simplifiedMembers('Sen.'))
+)
+buttonDiv.appendChild(senatorButton)
 
 function populateMemberDiv(memberProfile) {
+  removeChildren(memberDiv)
   memberProfile.forEach(member => {
     let memFigure = document.createElement('figure')
     let figImg = document.createElement('img')
@@ -40,12 +54,29 @@ function populateMemberDiv(memberProfile) {
     
     figImg.src = member.imgURL
 
-    figCaption.textContent = `${member.short_title} ${member.name}`
+    figCaption.textContent = `${member.state} ${member.short_title} ${member.name}`
     memFigure.appendChild(figImg)
     memFigure.appendChild(figCaption)
     memberDiv.appendChild(memFigure)
   })
 }
+
+
+/* failed attempts at button making
+const repButton = document.createElement('button')
+repButton.innerHTML = 'Republicans'
+repButton.onclick = populateMemberDiv(repArray){}
+document.body.appendChild
+
+
+const republicanButton = document.querySelector('rep')
+republicanButton.textContent = 'Republicans'
+republicanButton.addEventListener('click', () => 
+  populateMemberDiv(repArray)
+)
+*/
+
+
 
 //const filterSenators = (prop, value) => simplifiedSenators().filter(senator => senator[prop] === value)
   
@@ -54,30 +85,6 @@ function populateMemberDiv(memberProfile) {
 
 //console.log(republicans, femaleSenators)
 
-const mostSeniorMember = simplifiedMembers().reduce((acc, senator) => {
-  return acc.seniority > senator.seniority ? acc : senator 
-})
-
-seniorityHeading.textContent = `The most senior member of Congress is ${mostSeniorMember.name} who has taken our tax dollars as salary for more than ${mostSeniorMember.seniority} years!`
-
-const mostLoyal = simplifiedMembers().reduce((acc, senator) => {
-  if(senator.loyaltyPct === 100) {
-    acc.push(senator)
-  }
-  return acc
-}, [])
-
-const biggestWeasel = simplifiedMembers().reduce((acc, senator) => 
-(acc.missedVotesPct || 0) > senator.missedVotesPct ? acc : senator, {})
-
-const biggestWeasels = simplifiedMembers().filter(senator => senator.missedVotesPct >= 50)
-
-
-biggestWeasels.forEach(weasel => {
-  let listItem = document.createElement('li')
-  listItem.textContent = weasel.name
-  weaselOrderedList.appendChild(listItem)
-})
 
 /*
 function simplifiedMembers(chamberFilter) {
