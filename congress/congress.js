@@ -54,7 +54,7 @@ function populateMemberDiv(memberProfile) {
     
     figImg.src = member.imgURL
 
-    figCaption.textContent = `${member.state} ${member.short_title} ${member.name}`
+    figCaption.textContent = `${member.state} ${member.short_title} ${member.name} This is my MISSED VOTES percentage: ${member.missedVotesPct}`
     memFigure.appendChild(figImg)
     memFigure.appendChild(figCaption)
     memberDiv.appendChild(memFigure)
@@ -72,6 +72,7 @@ searchBar.addEventListener('keyup', (input) => {
 })
 
 
+
 function disStateMembers(memberProfile) {
   removeChildren(memberDiv)
   memberProfile.forEach(member => {
@@ -80,18 +81,40 @@ function disStateMembers(memberProfile) {
     let figCaption = document.createElement('figcaption')
     
     figImg.src = member.imgURL
-
-    figCaption.textContent = `${member.state} ${member.short_title} ${member.name}`
+    
+    figCaption.textContent = `${member.state} ${member.short_title} ${member.name} This is my MISSED VOTES percentage: ${member.missedVotesPct}`
     memFigure.appendChild(figImg)
     memFigure.appendChild(figCaption)
     memberDiv.appendChild(memFigure)
   })
 }
 
+const bigWeaselButton = document.createElement('button')
+bigWeaselButton.textContent = 'The Least Effective Person on the Planet'
+bigWeaselButton.addEventListener('click', () => 
+  populateWeasel(biggestWeasel)
+)
+buttonDiv.appendChild(bigWeaselButton)
 
 
 
+const biggestWeasel = simplifiedMembers().reduce((acc, senator) => 
+(acc.missedVotesPct || 0) > senator.missedVotesPct ? acc : senator, {})
 
+
+function populateWeasel(weasel) {
+  removeChildren(memberDiv)
+    let memFigure = document.createElement('figure')
+    let figImg = document.createElement('img')
+    let figCaption = document.createElement('figcaption')
+    
+    figImg.src = weasel.imgURL
+
+    figCaption.textContent = `${weasel.state} ${weasel.short_title} ${weasel.name} This is my MISSED VOTES percentage: ${weasel.missedVotesPct}`
+    memFigure.appendChild(figImg)
+    memFigure.appendChild(figCaption)
+    memberDiv.appendChild(memFigure)
+  }
 
 
 
