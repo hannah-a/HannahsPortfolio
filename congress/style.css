@@ -13,6 +13,11 @@
    --light-green: #578067;
    --light-grey: #f2f7f7;
    --light-pink: #eed9ea;
+   --congress-red: #260101;
+   --congress-blue: #1D3159;
+   --congress-white: #e7feff;
+   --congress-tan: #8C7B65;
+   --building-color: #385366;
   }
    html {
     font-size: 62.5%;
@@ -21,8 +26,8 @@
    body {
     font-family: basic-sans, sans-serif;
     font-weight: 400;
-    background: rgb(2,0,36);
-    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 23%, rgba(255,0,0,1) 59%);
+    background: rgb(29,49,89);
+background: linear-gradient(0deg, rgba(29,49,89,1) 0%, rgba(231,254,255,1) 100%);
   }
    
    @media (max-width: 1200px) {
@@ -30,29 +35,7 @@
      font-size: 60%
     }
   }
-  h1 {
-    font-size: 10vh;
-    padding: 10vw 6vw 0 2vw;
-    color: var(--light-yellow);
-    text-align: center;
-  }
   
-  .members {
-    display: flex;
-    flex-wrap: wrap;
-  }
-  
-  figure {
-    width: 160px;
-    display: flex;
-    flex-direction: column;
-    margin: 1em;
-  }
-  
-  figcaption {
-    text-align: center;
-  }
-
   /*navigation*/
   
 #navbar {
@@ -87,4 +70,40 @@
    
    a {
     text-decoration: none;
+  }
+
+ /* HEADER */
+.titleBox {
+  background-image: url(/images/congressdomepng.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 800px;
+  padding-top: 10vh;
+}
+
+
+  h1 {
+    font-size: 10vh;
+    padding: 10vw 6vw 0 2vw;
+    color: var(--light-yellow);
+    text-align: center;
+  }
+
+  .members {
+    display: flex;
+    height: 400px;
+    overflow-y: scroll;
+    white-space: nowrap;
+    position: relative;
+    bottom: 320px;
+  }
+  
+  figure {
+   
+    margin: 1em;
+  }
+  
+  figcaption {
+    text-align: center;
+    text-overflow: 
   }
