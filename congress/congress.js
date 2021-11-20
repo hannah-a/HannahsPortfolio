@@ -100,7 +100,7 @@ buttonDiv.appendChild(bigWeaselButton)
 
 const biggestWeasel = simplifiedMembers().reduce((acc, senator) => 
 (acc.missedVotesPct || 0) > senator.missedVotesPct ? acc : senator, {})
-
+biggestWeasel.className = 'biggestWeasel'
 
 function populateWeasel(weasel) {
   removeChildren(memberDiv)
