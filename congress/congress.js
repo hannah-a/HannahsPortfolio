@@ -32,14 +32,14 @@ function simplifiedMembers(chamberFilter/*naming the argument*/) {
 //WORKING BUTTONS
 
 const representativeButton = document.createElement('button')
-representativeButton.textContent = 'rep button works'
+representativeButton.textContent = 'Representatives'
 representativeButton.addEventListener('click', () => 
   populateMemberDiv(simplifiedMembers('Rep.'))
 )
 buttonDiv.appendChild(representativeButton)
 
 const senatorButton = document.createElement('button')
-senatorButton.textContent = 'sen button works'
+senatorButton.textContent = 'Senators'
 senatorButton.addEventListener('click', () => 
   populateMemberDiv(simplifiedMembers('Sen.'))
 )
@@ -60,6 +60,57 @@ function populateMemberDiv(memberProfile) {
     memberDiv.appendChild(memFigure)
   })
 }
+
+// SEARCH BAR
+const searchBar = document.getElementById('searchBar')
+searchBar.addEventListener('keyup', (input) => {
+  const searchString = input.target.value.toUpperCase()
+  const filteredMembers = simplifiedMembers().filter( member => {
+    return member.state.toUpperCase().includes(searchString)
+  })
+  disStateMembers(filteredMembers)
+})
+
+
+function disStateMembers(memberProfile) {
+  removeChildren(memberDiv)
+  memberProfile.forEach(member => {
+    let memFigure = document.createElement('figure')
+    let figImg = document.createElement('img')
+    let figCaption = document.createElement('figcaption')
+    
+    figImg.src = member.imgURL
+
+    figCaption.textContent = `${member.state} ${member.short_title} ${member.name}`
+    memFigure.appendChild(figImg)
+    memFigure.appendChild(figCaption)
+    memberDiv.appendChild(memFigure)
+  })
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /* failed attempts at button making
