@@ -4,7 +4,10 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
   <link href="style.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://use.typekit.net/iaf8fen.css">
+  <script src="https://kit.fontawesome.com/f5c810b0d9.js" crossorigin="anonymous"></script>
   <title>Members of Congress</title>
 </head>
 <body> 
@@ -22,18 +25,48 @@
       <header>
         <h1>Members of Congress</h1>
       </header>
-      <div class="buttons"></div>
+      <div class="buttons" style="text-align: center !important;"></div>
       <div id="searchWrapper">
-        <input type="text" name="searchbar" id="searchBar" placeholder="State Search: AL, CA, CO, ID, NY, TX, NJ, UT ect... ">
+        <input type="text" name="searchbar" id="searchBar" class="input is-large" placeholder="State Search: AL, CA, CO, ID, NY, TX, NJ, UT ect... ">
       </div>
+  
     </div>
-    <div class="memberBox">
-      <div class="members">
+    <div class="memberBox" onerror="memberError()">
+      <a class="url">
+      <div class="members" onerror="memberError()">
       </div>
+      </a>
     </div>
   </main>
-
+  <div class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-content">
+      <h1 class="box memMessage">This congressman is Unavailable</h1>
+    </div>
+    <button class="modal-close is-large" aria-label="close"></button>
+  </div>
+  <footer> 
+    <section id="contact">
+      <h2>Get in touch with <em>awesomeness!</em></h2>
+      <p>Web development is my jam</p>
+      <div>
+        <a id="profile-link" href="https://github.com/hannah-a" target="_blank"><i class="fab fa-github-square"></i>Github</a>
+        <a id="profile-link" href="#" target="_blank"><i class="fab fa-linkedin"></i> Linkedin</span></a>
+        <a id="profile-link" href="#" target="_blank"><i class="fab fa-twitter-square"></i></i> Twitter</a>
+        <a id="profile-link" href="#" target="_blank"><i class="fas fa-envelope"></i>Email</a>
+        <a id="profile-link" href="#" target="_blank"><i class="fas fa-phone-square-alt"></i>Phone</a>
+      </div>
+   </section>
+ <footer>
+  <h4>
+   &copy;2021 Hannah Armstrong Portfolio 
+  </h4>
   <script src="congress.js" type="module"></script>
+  <script>
+    function memberError() {
+      alert('Members of Congress could not be loaded.');
+    }
+  </script>
 </body>
 </html>
 

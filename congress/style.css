@@ -1,78 +1,81 @@
 * {
-    margin: 0;
-    box-sizing: border-box;
-  }
-  :root {
-    --main-blue: #3a677a;
-    --main-grey: #1d1d1f;
-    --light-yellow: #f2cf63;
-    --dark-yellow: #c59c4f;
-    --light-grey: #f2f2f2;
-    --main-brown: #0e0500;
-   --dark-green: #164929;
-   --light-green: #578067;
-   --light-grey: #f2f7f7;
-   --light-pink: #eed9ea;
-   --congress-red: #260101;
-   --congress-blue: #1D3159;
-   --congress-white: #e7feff;
-   --congress-tan: #8C7B65;
-   --building-color: #385366;
-  }
-   html {
-    font-size: 62.5%;
-    scroll-behavior: smooth;
-  }
-   body {
-    font-family: basic-sans, sans-serif;
-    font-weight: 400;
-    background: rgb(29,49,89);
-background: linear-gradient(0deg, rgba(29,49,89,1) 0%, rgba(231,254,255,1) 100%);
-  }
-   
-   @media (max-width: 1200px) {
-    html{
-     font-size: 60%
-    }
-  }
-  
-  /*navigation*/
-  
-#navbar {
-    width: 100%;
-    background-color: var(--main-brown);
-    position: fixed;
-    z-index: 2;
-  }
-  
-   .nav-list {
-    display: flex;
-    justify-content: flex-start;
-    list-style-type: none;
-    margin-right: 1rem;
-  }
-  
-   .nav-list a {
-    display: block;
-    color: #f0f0f0;
-    padding: 2rem;
-    font-size: 2vw;
-  }
-   @media (max-width: 428px) {
-    .nav-list a {
-     font-size: 7vw;
-    }
-  }
-   
-   .nav-list a:hover {
-    background-color: var(--main-blue);
-  }
-   
-   a {
-    text-decoration: none;
-  }
+  margin: 0;
+  box-sizing: border-box;
+}
+:root {
+  --main-blue: #3a677a;
+  --main-grey: #1d1d1f;
+  --light-yellow: #f2cf63;
+  --dark-yellow: #c59c4f;
+  --light-grey: #f2f2f2;
+  --main-brown: #0e0500;
+  --dark-green: #164929;
+  --light-green: #578067;
+  --light-grey: #f2f7f7;
+  --light-pink: #eed9ea;
+  --congress-red: #260101;
+  --congress-blue: #1d3159;
+  --congress-white: #e7feff;
+  --congress-tan: #8c7b65;
+  --building-color: #385366;
+}
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+body {
+  font-family: basic-sans, sans-serif;
+  font-weight: 400;
+  background: linear-gradient(
+    0deg,
+    rgba(29, 49, 89, 1) 0%,
+    rgba(231, 254, 255, 1) 100%
+  );
+}
 
- /* HEADER */
+@media (max-width: 1200px) {
+  html {
+    font-size: 60%;
+  }
+}
+
+/*navigation*/
+
+#navbar {
+  width: 100%;
+  background-color: var(--main-brown);
+  position: fixed;
+  z-index: 2;
+}
+
+.nav-list {
+  display: flex;
+  justify-content: flex-start;
+  list-style-type: none;
+  margin-right: 1rem;
+}
+
+.nav-list a {
+  display: block;
+  color: #f0f0f0;
+  padding: 2rem;
+  font-size: 2vw;
+}
+@media (max-width: 428px) {
+  .nav-list a {
+    font-size: 7vw;
+  }
+}
+
+.nav-list a:hover {
+  background-color: var(--main-blue);
+}
+
+a {
+  text-decoration: none;
+}
+
+/* HEADER */
 .titleBox {
   background-image: url(/images/congressdomepng.png);
   background-repeat: no-repeat;
@@ -81,29 +84,142 @@ background: linear-gradient(0deg, rgba(29,49,89,1) 0%, rgba(231,254,255,1) 100%)
   padding-top: 10vh;
 }
 
+h1 {
+  width: 100%;
+  font-size: 10vh;
+  font-weight: 900;
+  padding: 8vw 6vw 4vw 6vw;
+  color: var(--light-yellow);
+  text-align: center;
+  text-shadow: 5px 5px 10px black;
+}
 
-  h1 {
-    font-size: 10vh;
-    padding: 10vw 6vw 0 2vw;
-    color: var(--light-yellow);
-    text-align: center;
-  }
+.buttons {
+  font-family: basic-sans, sans-serif;
+  padding: 2vh;
+  display: flex;
+  justify-content: center;
+  box-shadow: 5px 5px 10px black;
+  background-color:rgb(0, 0, 0, .9);
+}
 
-  .members {
-    display: flex;
-    height: 400px;
-    overflow-y: scroll;
-    white-space: nowrap;
-    position: relative;
-    bottom: 320px;
-  }
-  
-  figure {
-   
-    margin: 1em;
-  }
-  
-  figcaption {
-    text-align: center;
-    text-overflow: 
-  }
+.buttons button {
+  padding: 4rem;
+  border-radius: 20px;
+  border-style: none;
+  margin: 10px;
+  font-size: 200%;
+  font-weight: 700;
+}
+
+.buttons button:hover {
+  background-color: var(--light-yellow);
+}
+#searchWrapper {
+ text-align: center;
+
+}
+
+#searchBar {
+  margin: 2rem;
+  width: 400px;
+  background-color:black;
+  color: white;
+}
+#searchBar::placeholder {
+  color: var(--dark-yellow);
+}
+
+.members {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  text-align: center;
+
+  /*overflow-y: scroll;
+  white-space: nowrap;*/
+}
+
+
+
+figure {
+  margin: 2rem;
+  width: 200px;
+  background-color: var(--congress-blue);
+  box-shadow: 3px 5px 5px black;
+}
+
+figcaption {
+  text-align: center;
+  color: white;
+  width: 200px;
+  height: 150px;
+  padding: 1rem;
+  font-size: 2rem;
+  background-color: rgb(0, 0, 0, .9);
+  position: relative;
+  bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+
+}
+figcaption a {
+  font-size: 2.5rem;
+  color: var(--light-yellow);
+}
+figure img {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 20px;
+}
+/* Footer */
+
+#contact {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
+  background-color: var(--main-blue);
+}
+ 
+#contact h2 {
+  font-size: 4vw;
+  padding-bottom: 2rem;
+}
+#contact p {
+  font-size: 2rem;
+  padding-bottom: 1.7rem;
+}
+#contact div {
+  display: flex;
+  justify-content: center;
+}
+ 
+#contact div a {
+  color: var(--light-yellow);
+  padding: 2rem;
+  font-size: 1.5rem;
+  text-shadow: 2px 2px 1px var(--main-grey);
+  transition: transform 0.3s ease-out;
+}
+ 
+#contact div a:hover{
+  transform: translateY(8px);
+}
+ 
+#contact i {
+  padding-right: .7rem;
+  font-size: 3rem;
+  position: relative;
+  top: .5rem;
+}
+ 
+footer {
+  text-align: center;
+  font-size: 1.5rem;
+  color: white;
+  background-color: var(--main-grey);
+  padding: 0 0 2rem 0;
+}
