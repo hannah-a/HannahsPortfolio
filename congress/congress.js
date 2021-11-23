@@ -1,18 +1,40 @@
-import { senators } from '../data/senators.js'
-import { representatives } from '../data/representatives.js'
-import { removeChildren } from '../utils/index.js'
+import { senators } from "../data/senators.js";
+import { representatives } from "../data/representatives.js";
+import { removeChildren } from "../utils/index.js";
 
-const members = [...senators, ...representatives] // modern combining arrays like a genus
+const members = [...senators, ...representatives]; // modern combining arrays like a genus
 
-const memberDiv = document.querySelector('.members')
-const buttonDiv = document.querySelector('.buttons')
+const memberDiv = document.querySelector(".members");
+const buttonDiv = document.querySelector(".buttons");
 
-function simplifiedMembers(chamberFilter/*naming the argument*/) {
-  const filteredArray = members.filter(member/*naming the array element*/ => chamberFilter ? member.short_title === chamberFilter : member)
+const modal = document.querySelector(".modal");
+const closeButton = document.querySelector(".modal-close");
+const modalBackground = document.querySelector(".modal-background");
+const memMessage = document.querySelector(".memMessage");
+
+closeButton.addEventListener("click", () =>
+  modal.classList.toggle("is-active")
+);
+modalBackground.addEventListener("click", () =>
+  modal.classList.toggle("is-active")
+);
+
+
+document.getElementById("myImg").addEventListener("error", myFunction);
+
+function myFunction() {
+  document.getElementById("demo").innerHTML = "The image could not be loaded.";
+}
+
+
+
+function simplifiedMembers(chamberFilter /*naming the argument*/) {
+  const filteredArray = members.filter((member) /*naming the array element*/ =>
+    chamberFilter ? member.short_title === chamberFilter : member);
   /*a condition followed by a question mark (?), then an expression to execute if the condition is truthy followed by a colon (:), and finally the expression to execute if the condition is falsy.*/
 
-  return filteredArray.map(member => {
-    const middleName = member.middle_name ? ` ${member.middle_name} ` : ` `
+  return filteredArray.map((member) => {
+    const middleName = member.middle_name ? ` ${member.middle_name} ` : ` `;
     return {
       id: member.id,
       name: `${member.first_name}${middleName}${member.last_name} (${member.party})`,
@@ -23,118 +45,114 @@ function simplifiedMembers(chamberFilter/*naming the argument*/) {
       seniority: +member.seniority,
       missedVotesPct: member.missed_votes_pct,
       loyaltyPct: member.votes_with_party_pct,
-      state: member.state
-    }
-  })
+      state: member.state,
+      url: member.url,
+    };
+  });
 }
-
 
 //WORKING BUTTONS
 
-const representativeButton = document.createElement('button')
-representativeButton.textContent = 'Representatives'
-representativeButton.addEventListener('click', () => 
-  populateMemberDiv(simplifiedMembers('Rep.'))
-)
-buttonDiv.appendChild(representativeButton)
+const representativeButton = document.createElement("button");
+representativeButton.textContent = "Representatives";
+representativeButton.addEventListener("click", () =>
+  populateMemberDiv(simplifiedMembers("Rep."))
+);
+buttonDiv.appendChild(representativeButton);
 
-const senatorButton = document.createElement('button')
-senatorButton.textContent = 'Senators'
-senatorButton.addEventListener('click', () => 
-  populateMemberDiv(simplifiedMembers('Sen.'))
-)
-buttonDiv.appendChild(senatorButton)
+const senatorButton = document.createElement("button");
+senatorButton.textContent = "Senators";
+senatorButton.addEventListener("click", () =>
+  populateMemberDiv(simplifiedMembers("Sen."))
+);
+buttonDiv.appendChild(senatorButton);
 
 function populateMemberDiv(memberProfile) {
-  removeChildren(memberDiv)
-  memberProfile.forEach(member => {
-    let memFigure = document.createElement('figure')
-    let figImg = document.createElement('img')
-    let figCaption = document.createElement('figcaption')
-    
-    figImg.src = member.imgURL
+  removeChildren(memberDiv);
+  memberProfile.forEach((member) => {
+    let memFigure = document.createElement("figure");
+    let figImg = document.createElement("img");
+    let figCaption = document.createElement("figcaption");
 
-    figCaption.textContent = `${member.state} ${member.short_title} ${member.name} This is my MISSED VOTES percentage: ${member.missedVotesPct}`
-    memFigure.appendChild(figImg)
-    memFigure.appendChild(figCaption)
-    memberDiv.appendChild(memFigure)
-  })
+    figImg.src = member.imgURL;
+    const urlArray = document.createElement("a");
+    urlArray.setAttribute("href", member.url);
+    urlArray.innerText = ` ${member.short_title} ${member.name}`;
+    figCaption.textContent = `MISSED VOTES: ${member.missedVotesPct}% 
+    `;
+    
+    memFigure.appendChild(figImg);
+    memFigure.appendChild(figCaption);
+    figCaption.appendChild(urlArray);
+    memberDiv.appendChild(memFigure);
+  });
 }
+/*simplifiedMembers().addEventListener("error", () => {
+    modal.classList.toggle("is-active");
+    memMessage.textContent = `The photo of ${member.name} does not exist.`;
+  }); */
+
 
 // SEARCH BAR
-const searchBar = document.getElementById('searchBar')
-searchBar.addEventListener('keyup', (input) => {
-  const searchString = input.target.value.toUpperCase()
-  const filteredMembers = simplifiedMembers().filter( member => {
-    return member.state.toUpperCase().includes(searchString)
-  })
-  disStateMembers(filteredMembers)
-})
-
-
+const searchBar = document.getElementById("searchBar");
+searchBar.addEventListener("keyup", (input) => {
+  const searchString = input.target.value.toUpperCase();
+  const filteredMembers = simplifiedMembers().filter((member) => {
+    return member.state.toUpperCase().includes(searchString);
+  });
+  disStateMembers(filteredMembers);
+});
 
 function disStateMembers(memberProfile) {
-  removeChildren(memberDiv)
-  memberProfile.forEach(member => {
-    let memFigure = document.createElement('figure')
-    let figImg = document.createElement('img')
-    let figCaption = document.createElement('figcaption')
-    
-    figImg.src = member.imgURL
-    
-    figCaption.textContent = `${member.state} ${member.short_title} ${member.name} This is my MISSED VOTES percentage: ${member.missedVotesPct}`
-    memFigure.appendChild(figImg)
-    memFigure.appendChild(figCaption)
-    memberDiv.appendChild(memFigure)
-  })
+  removeChildren(memberDiv);
+  memberProfile.forEach((member) => {
+    let memFigure = document.createElement("figure");
+    let figImg = document.createElement("img");
+    let figCaption = document.createElement("figcaption");
+
+    figImg.src = member.imgURL;
+    figImg.src = member.imgURL;
+    const urlArray = document.createElement("a");
+    urlArray.setAttribute("href", member.url);
+    urlArray.innerText = `${member.state} ${member.short_title} ${member.name}`;
+    figCaption.textContent = `MISSED VOTES: ${member.missedVotesPct}% 
+    `;
+    memFigure.appendChild(figImg);
+    memFigure.appendChild(figCaption);
+    figCaption.appendChild(urlArray);
+    memberDiv.appendChild(memFigure);
+  });
 }
 
-const bigWeaselButton = document.createElement('button')
-bigWeaselButton.textContent = 'The Least Effective Person on the Planet'
-bigWeaselButton.addEventListener('click', () => 
-  populateWeasel(biggestWeasel)
-)
-buttonDiv.appendChild(bigWeaselButton)
+const bigWeaselButton = document.createElement("button");
+bigWeaselButton.textContent = "The Least Effective Person in Congress";
+bigWeaselButton.addEventListener("click", () => populateWeasel(biggestWeasel));
+buttonDiv.appendChild(bigWeaselButton);
 
-
-
-const biggestWeasel = simplifiedMembers().reduce((acc, senator) => 
-(acc.missedVotesPct || 0) > senator.missedVotesPct ? acc : senator, {})
-biggestWeasel.className = 'biggestWeasel'
+const biggestWeasel = simplifiedMembers().reduce(
+  (acc, senator) =>
+    (acc.missedVotesPct || 0) > senator.missedVotesPct ? acc : senator,
+  {}
+);
+biggestWeasel.className = "biggestWeasel";
 
 function populateWeasel(weasel) {
-  removeChildren(memberDiv)
-    let memFigure = document.createElement('figure')
-    let figImg = document.createElement('img')
-    let figCaption = document.createElement('figcaption')
-    
-    figImg.src = weasel.imgURL
+  removeChildren(memberDiv);
+  let memFigure = document.createElement("figure");
+  let figImg = document.createElement("img");
+  let figCaption = document.createElement("figcaption");
 
-    figCaption.textContent = `${weasel.state} ${weasel.short_title} ${weasel.name} This is my MISSED VOTES percentage: ${weasel.missedVotesPct}`
-    memFigure.appendChild(figImg)
-    memFigure.appendChild(figCaption)
-    memberDiv.appendChild(memFigure)
-  }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  figImg.src = weasel.imgURL;
+  const urlArray = document.createElement("a");
+  urlArray.setAttribute("href", weasel.url);
+  urlArray.innerText = `${weasel.state} ${weasel.short_title} ${weasel.name}`;
+  figCaption.textContent = `MISSED VOTES: ${weasel.missedVotesPct}% 
+    `;
+  memFigure.appendChild(figImg);
+  memFigure.appendChild(figCaption);
+  figCaption.appendChild(urlArray);
+  memberDiv.appendChild(memFigure);
+}
 
 /* failed attempts at button making
 const repButton = document.createElement('button')
@@ -150,15 +168,12 @@ republicanButton.addEventListener('click', () =>
 )
 */
 
-
-
 //const filterSenators = (prop, value) => simplifiedSenators().filter(senator => senator[prop] === value)
-  
+
 //const republicans = filterSenators('party', 'R')
 //const femaleSenators = filterSenators('gender', 'F')
 
 //console.log(republicans, femaleSenators)
-
 
 /*
 function simplifiedMembers(chamberFilter) {
