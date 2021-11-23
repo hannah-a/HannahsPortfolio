@@ -20,11 +20,12 @@ modalBackground.addEventListener("click", () =>
 );
 
 
-document.getElementById("myImg").addEventListener("error", myFunction);
+/*document.getElementsByClassName(".url").addEventListener("error", myFunction);
 
 function myFunction() {
-  document.getElementById("demo").innerHTML = "The image could not be loaded.";
-}
+    modal.classList.toggle("is-active");
+    document.getElementsByClassName('.memMessage').textContent = `Members of Congress could not load.`;
+}*/
 
 
 
