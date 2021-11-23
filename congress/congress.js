@@ -87,6 +87,10 @@ function populateMemberDiv(memberProfile) {
     figCaption.appendChild(urlArray);
     memberDiv.appendChild(memFigure);
   });
+  simplifiedMembers().addEventListener("error", () => {
+    modal.classList.toggle("is-active");
+    memMessage.textContent = `The photo of ${member.name} does not exist.`;
+  });
 }
 /*simplifiedMembers().addEventListener("error", () => {
     modal.classList.toggle("is-active");
