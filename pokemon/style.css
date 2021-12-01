@@ -7,11 +7,15 @@
   width: 200px;
   height: 260px;
   margin: 1em;
+  perspective: 600px;
 }
 
 .card {
   width: 100%;
   height: 100%;
+  transition: transform 1s;
+  transform-style: preserve-3d;
+  cursor: pointer;
   position: relative;
 }
 
@@ -19,12 +23,17 @@
   width: 100%;
   height: 100%;
   position: absolute;
+  backface-visibility: hidden; 
 }
 
+.card.is-flipped {
+  transform: rotateY(180); /* toggling whether this property is showing */
+}
 .front {
   background: magenta;
 }
 
 .back {
   background: mediumseagreen;
+  transform: rotateY(180);
 }
