@@ -293,3 +293,5 @@ let d = [1,2] // 0x02
 
 let c = d // c===d is true
  */
+/* class makes us make object instances that are shaped all the same way */
+
