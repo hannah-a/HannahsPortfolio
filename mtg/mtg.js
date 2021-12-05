@@ -23,3 +23,5 @@ function getAPIData(url) { //removing async makes data come in order
     })
   }
   loadMTG()
+
+  //tomorrow, make css card, populate card back and fronts, research pagination, make random button
