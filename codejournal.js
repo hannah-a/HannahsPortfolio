@@ -295,3 +295,18 @@ let c = d // c===d is true
  */
 /* class makes us make object instances that are shaped all the same way */
 
+Udemy API
+searchMoviesAPI('amadeus', () => {})
+
+function myDisplayerparagraph(some) {
+  document.getElementById("demo").innerHTML = some;
+}
+
+function myCalculator(num1, num2) {
+  let sum  = num1 + num2;
+  return sum; // return stops the function and returns value to function caller
+}
+
+let result = myCalculator(2, 3) //function caller
+myDisplayerparagraph(result)
+

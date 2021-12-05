@@ -15,24 +15,24 @@
   perspective: 600px;
 }
 
-.card {
+.card { 
   width: 100%;
   height: 100%;
   transition: transform 1s;
   transform-style: preserve-3d;
   cursor: pointer;
-  position: relative;
+  position: relative; 
 }
 
 .cardFace {
   width: 100%;
   height: 100%;
-  position: absolute;
-  backface-visibility: hidden;
+  position: absolute; 
+  backface-visibility: hidden; /* making sure you don't see the back of the card when the card is flippling*/
 }
 
 .card.is-flipped {
-  transform: rotateY(180deg); /* toggling whether this property is showing */
+  transform: rotateY(180deg); /* toggling whether this property is showing hook up a button to make the transform happen,  have to apply class */
 }
 
 .front {
@@ -45,5 +45,5 @@
 }
 
 figure img {
-  width: 200px;
+  width: 200px; /*keeps image inside*/
 }

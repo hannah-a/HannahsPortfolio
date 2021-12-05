@@ -1,20 +1,20 @@
 import { removeChildren } from '../utils/index.js'
 
-function getAPIData(url) {
+function getAPIData(url) { //removing async makes data come in order
   try {
-    return fetch(url).then((data) => data.json())
+    return fetch(url).then((data) => data.json()) //then with data it will data in json by calling it, it's going to call the api ten times inorder
   } catch (error) {
     console.error(error)
   }
 }
 
-function loadPokemon(offset = 0, limit = 25) {
+function loadPokemon(offset = 0, limit = 25) { //without a function, js will just read it and call it but with a button you can control it so put it in function
   getAPIData(
     `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`,
-  ).then(async (data) => {
-    for (const pokemon of data.results) {
-      await getAPIData(pokemon.url).then((pokeData) =>
-        populatePokeCard(pokeData),
+  ).then(async /* in second api data call*/(data) => {
+    for (const pokemon of data.results) { //inside for loop, just want the results array, will give each pokemon one at a time
+      await /*await this function forcing it to go in order of our for loop*/ getAPIData(pokemon.url).then((pokeData) => //only two properties in the object, can call getApi data on each url property
+        populatePokeCard(pokeData/*populate using pokeData*/), //if we have one pokemon at a time, we can populate each card for each one
       )
     }
   })
@@ -79,9 +79,9 @@ function populatePokeCard(singlePokemon) {
   pokeCard.className = 'card'
   pokeCard.addEventListener('click', () =>
     pokeCard.classList.toggle('is-flipped'),
-  )
+  ) // added event listener to make a button to tranform the card
 
-  const front = populateCardFront(singlePokemon)
+  const front = populateCardFront(singlePokemon) //will call function, will pass single pokemon to this function
   const back = populateCardBack(singlePokemon)
 
   pokeCard.appendChild(front)
@@ -89,10 +89,10 @@ function populatePokeCard(singlePokemon) {
   pokeScene.appendChild(pokeCard)
   pokeGrid.appendChild(pokeScene)
 }
-
-function populateCardFront(pokemon) {
+ //these two functions to bring in the front card
+function populateCardFront(pokemon) /*takes single pokemon */{
   const pokeFront = document.createElement('figure')
-  pokeFront.className = 'cardFace front'
+  pokeFront.className = 'cardFace front'       
   const pokeImg = document.createElement('img')
   pokeImg.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png`
 
@@ -102,8 +102,27 @@ function populateCardFront(pokemon) {
   pokeFront.appendChild(pokeCaption)
 
   //typesBackground(pokemon, pokeFront)
-  return pokeFront
+  return pokeFront //need to return it so that front equals
 }
+
+//could use populate back to populate the card image. I could use the card image and really this because I wouldn't need to add the information myself instead I could just use the images and then have a search button that will filter, map and reduce the data to find certain cards.
+function populateCardBack(pokemon) {
+  const pokeBack = document.createElement('div')
+  pokeBack.className = 'cardFace back'
+  const label = document.createElement('h4')
+  label.textContent = 'Abilities:' //created an h4 text
+  pokeBack.appendChild(label)
+  const abilityList = document.createElement('ul') //don't want to numbers to show up
+  pokemon.abilities.forEach((abilityItem) => { //name of property is abilities
+    let listItem = document.createElement('li')
+    listItem.textContent = abilityItem.ability.name
+    abilityList.appendChild(listItem)
+  })
+  pokeBack.appendChild(abilityList)
+  return pokeBack
+}
+
+
 
 function typesBackground(pokemon, card) {
   let pokeType1 = pokemon.types[0].type.name
@@ -150,18 +169,3 @@ function getPokeTypeColor(pokeType) {
   }
 }
 
-function populateCardBack(pokemon) {
-  const pokeBack = document.createElement('div')
-  pokeBack.className = 'cardFace back'
-  const label = document.createElement('h4')
-  label.textContent = 'Abilities:'
-  pokeBack.appendChild(label)
-  const abilityList = document.createElement('ul')
-  pokemon.abilities.forEach((abilityItem) => {
-    let listItem = document.createElement('li')
-    listItem.textContent = abilityItem.ability.name
-    abilityList.appendChild(listItem)
-  })
-  pokeBack.appendChild(abilityList)
-  return pokeBack
-}
