@@ -119,8 +119,12 @@ a {
 
 figure img {
   width: 200px; /*keeps image inside*/
+  border-radius: 10px;
 }
 
+figure {
+    border-radius: 10px;
+}
 /* Footer  */
 #contact {
   display: flex;
