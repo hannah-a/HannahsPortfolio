@@ -64,7 +64,7 @@ function populateCardFront(card) {
   const mtgFront = document.createElement('figure')
   mtgFront.className = 'cardFace front'
  const imgFront = document.createElement('img')
- imgFront.src = 'https://s3.amazonaws.com/ccg-corporate-production/news-images/Back0_Sheet%20(F)20201203163456929.jpg'
+ imgFront.src = /*'https://s3.amazonaws.com/ccg-corporate-production/news-images/Back0_Sheet%20(F)20201203163456929.jpg'*/ card.image_uris.art_crop
 
   const mtgCaption = document.createElement('figcaption')
   mtgCaption.textContent = card.name
