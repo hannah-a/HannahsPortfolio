@@ -1,9 +1,10 @@
 // magic the gathering API Boom baby
 // the cat link https://api.scryfall.com/cards/search?as=grid&order=name&q=%28type%3Acreature+type%3Acat%29&format=json
+//rare cat 62 objects https://api.scryfall.com/cards/search?as=grid&order=name&q=type%3Acat+rarity%3Ar&format=json
 
 import { removeChildren } from "../utils/index.js";
 
-//rare cat 62 objects https://api.scryfall.com/cards/search?as=grid&order=name&q=type%3Acat+rarity%3Ar&format=json
+
 
 const mtgGrid = document.querySelector(".mtgGrid");
 const loadButton = document.querySelector(".loadCats");
@@ -46,6 +47,12 @@ function loadMTG() {
   });
 }
 
+
+
+
+// Load magic cats buttons
+
+
 function populateCard(singleCard) {
   const mtgScene = document.createElement("div");
   mtgScene.className = "scene";
@@ -87,26 +94,31 @@ function populateCardBack(card) {
 
   return mtgBack;
 }
-//tomorrow, make css card, populate card back and fronts, research pagination, make random button
+
+
+
+
+
+// Create New Cat Button
 
 const newButton = document.querySelector(".newCat");
 newButton.addEventListener("click", () => {
   let catName = prompt("What is the name of your new Cat?");
-  let catHeight = prompt("What is the cat's height?");
-  let catWeight = prompt("What is the cat's weight?");
+  let catType = prompt("What is your cat type? (Zombie, Rebel, Warrior, Soldier, Cleric, Avator, Knight ect...")
   let catAbilities = prompt(
     "What are your cat abilities? (use a comma separated list)"
   );
+  let catLevel = prompt("What is your cats Power and Toughness? (Power/Toughness)")
+ 
   let newCat = new Cat(
     catName,
-    catHeight,
-    catWeight,
+    catType,
+    catLevel,
     getAbilitiesArray(catAbilities)
   );
   populateNewCard(newCat);
 });
 
-// New Button stuff
 
 function getAbilitiesArray(commaString) {
   let tempArray = commaString.split(","); //split method divides strings into an array searching for the pattern in the first parameter
@@ -122,14 +134,14 @@ function getAbilitiesArray(commaString) {
 class Cat {
   constructor(
     name,
-    height,
-    weight,
+    type,
+    level,
     abilities
   ) /*pass in properties you want it to have */ {
     (this.name = name),
-      (this.height = height),
-      (this.weight = weight),
-      (this.abilities = abilities);
+    this.type = type,
+    this.level = level,
+    (this.abilities = abilities);
   }
 }
 
@@ -164,25 +176,74 @@ function populateNewFront(cat) {
 
 function populateNewBack(cat) {
   const catDiv = document.createElement("div");
-  catDiv.className = "cardFace back";
-  const catLabel = document.createElement("h4");
-  catLabel.textContent = "Abilities:";
-  catDiv.appendChild(catLabel)
+  catDiv.className = "cardFace back newDiv";
+  const catName = document.createElement("h1");
+  catName.textContent = cat.name
+  const catType = document.createElement("h2"); //
+  catType.textContent = cat.type
+
+
   const catList = document.createElement("ul");
   cat.abilities.forEach((abilityItem) => {
     let listItem = document.createElement("li");
     listItem.textContent = abilityItem.ability.name;
     catList.appendChild(listItem);
   });
-  const catName = document.createElement("h1");
-  const catHeight = document.createElement('p')
-  catHeight.textContent = cat.height
-  const catWeight = document.createElement('p')
-  catWeight.textContent = cat.weight
-  catName.textContent = cat.name;
-  catDiv.appendChild(catName);
-  catDiv.appendChild(catWeight)
-  catDiv.appendChild(catHeight)
-  catDiv.appendChild(catList);
+
+  const catLevel = document.createElement('h3')
+  
+  catLevel.textContent = cat.level
+
+  catDiv.appendChild(catName)
+  catDiv.appendChild(catType)
+  catDiv.appendChild(catList)
+  catDiv.appendChild(catLevel)
+
   return catDiv;
 }
+
+//make the random image in the cat creator function
+//insert the link for more information about the cat card onto the card
+
+//combine the two api calls into one variable of data,
+
+//simplify that data
+
+//use the simplified function of data to make a select button that will sort on rarity or color
+
+//using the reduce function on the simplified data to see which cat has the highest power/toughness ratio, to find the cards and push them to an empty array and then display that array with populate(Cards)
+
+//
+
+/*a condition followed by a question mark (?), then an expression to execute if the condition is truthy followed by a colon (:), and finally the expression to execute if the condition is falsy.*/
+
+/*
+const biggestWeasel = simplifiedMembers().reduce(
+  (acc, senator) =>
+    (acc.missedVotesPct || 0) > senator.missedVotesPct ? acc : senator,
+  {}
+); 
+
+function simplifiedMembers(chamberFilter -naming the argument) {
+  const filteredArray = members.filter((member) /naming the array element =>
+    chamberFilter ? member.short_title === chamberFilter : member);
+  
+
+  return filteredArray.map((member) => {
+    const middleName = member.middle_name ? ` ${member.middle_name} ` : ` `;
+    return {
+      id: member.id,
+      name: `${member.first_name}${middleName}${member.last_name} (${member.party})`,
+      short_title: member.short_title,
+      party: member.party,
+      imgURL: `https://www.govtrack.us/static/legislator-photos/${member.govtrack_id}-100px.jpeg`,
+      gender: member.gender,
+      seniority: +member.seniority,
+      missedVotesPct: member.missed_votes_pct,
+      loyaltyPct: member.votes_with_party_pct,
+      state: member.state,
+      url: member.url,
+    };
+  });
+}
+*/

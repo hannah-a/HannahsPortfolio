@@ -200,4 +200,5 @@ function getPokeTypeColor(pokeType) {
     default:
       color = "#888888";
   }
+  return color
 }

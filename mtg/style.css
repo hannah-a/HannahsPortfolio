@@ -100,6 +100,7 @@ a {
   height: 100%;
   position: absolute;
   backface-visibility: hidden; /* making sure you don't see the back of the card when the card is flippling*/
+  border-radius: 10px;
 }
 
 .card.is-flipped {
@@ -174,4 +175,10 @@ footer {
   color: white;
   background-color: var(--main-grey);
   padding: 1rem 0;
+}
+
+.newDiv {
+  border: 12px solid black;
+  border-radius: 10px;
+  background-color: rgb(211, 211, 211);
 }
