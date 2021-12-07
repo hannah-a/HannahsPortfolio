@@ -47,3 +47,10 @@
 figure img {
   width: 200px;
 }
+
+figcaption {
+  text-transform: capitalize;
+  font-size: 130%;
+  line-height: 3em;
+  text-align: center;
+}

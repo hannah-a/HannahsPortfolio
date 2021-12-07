@@ -20,12 +20,19 @@ function loadPokemon(offset = 0, limit = 25) {
   })
 }
 
+loadPokemon(200, 25)
+
 const pokeGrid = document.querySelector('.pokeGrid')
 const loadButton = document.querySelector('.loadPokemon')
 loadButton.addEventListener('click', () => {
   removeChildren(pokeGrid)
-  loadPokemon(100, 5)
+  loadPokemon(100, 50)
 })
+
+/* First, get a reference to the pokemon choice button
+Second, add an event listener on click
+Third, use getAPIData with a URL like this https://pokeapi.co/api/v2/${promptedNameOrId}
+Fourth, populatePokeCard with the pokemon data retrieved */
 
 const moreButton = document.querySelector('.morePokemon')
 moreButton.addEventListener('click', () => {
@@ -42,11 +49,13 @@ newButton.addEventListener('click', () => {
   let pokeAbilities = prompt(
     'What are your Pokemon abilities? (use a comma separated list)',
   )
+  let pokeTypes = prompt("What are your Pokemon's types? (up to 2 types separated by a space)")
   let newPokemon = new Pokemon(
     pokeName,
     pokeHeight,
     pokeWeight,
     getAbilitiesArray(pokeAbilities),
+    getTypesArray(pokeTypes)
   )
   populatePokeCard(newPokemon)
 })
@@ -62,13 +71,25 @@ function getAbilitiesArray(commaString) {
   })
 }
 
+function getTypesArray(spacedString) {
+  let tempArray = spacedString.split(' ')
+  return tempArray.map((typeName) => {
+    return {
+      type: {
+        name: typeName
+      }
+    }
+  })
+}
+
 class Pokemon {
-  constructor(name, height, weight, abilities) {
-    ;(this.id = 100),
-      (this.name = name),
-      (this.height = height),
-      (this.weight = weight),
-      (this.abilities = abilities)
+  constructor(name, height, weight, abilities, types) {
+    this.id = 100,
+      this.name = name,
+      this.height = height,
+      this.weight = weight,
+      this.abilities = abilities,
+      this.types = types
   }
 }
 
@@ -97,11 +118,13 @@ function populateCardFront(pokemon) {
   pokeImg.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png`
 
   const pokeCaption = document.createElement('figcaption')
+
+  //pokeCaption.textContent = `${pokemon.name[0].toUpperCase()}${pokemon.name.slice(1)}`
   pokeCaption.textContent = pokemon.name
   pokeFront.appendChild(pokeImg)
   pokeFront.appendChild(pokeCaption)
 
-  //typesBackground(pokemon, pokeFront)
+  typesBackground(pokemon, pokeFront)
   return pokeFront
 }
 
@@ -109,10 +132,14 @@ function typesBackground(pokemon, card) {
   let pokeType1 = pokemon.types[0].type.name
   let pokeType2 = pokemon.types[1]?.type.name
   console.log(pokeType1, pokeType2)
-  card.style.setProperty(
-    'background',
-    `linear-gradient(${getPokeTypeColor(pokeType1)}, #FFF})`,
-  )
+  if(!pokeType2) {
+    card.style.setProperty('background', getPokeTypeColor(pokeType1))
+  } else {
+    card.style.setProperty(
+      'background',
+      `linear-gradient(${getPokeTypeColor(pokeType1)}, ${getPokeTypeColor(pokeType2)})`,
+    )
+  }
 }
 
 function getPokeTypeColor(pokeType) {
@@ -143,11 +170,15 @@ function getPokeTypeColor(pokeType) {
       color = '#C8FF00'
       break
       case 'psychic':
-        color = '#333333'
+        color = 'pink'
+        break
+        case 'ground':
+        color = 'brown'
         break
     default:
       color = '#888888'
   }
+  return color
 }
 
 function populateCardBack(pokemon) {
@@ -162,6 +193,13 @@ function populateCardBack(pokemon) {
     listItem.textContent = abilityItem.ability.name
     abilityList.appendChild(listItem)
   })
+  const typeslist = document.createElement('ol')
+  pokemon.types.forEach((pokeType) => {
+    let typeItem = document.createElement('li')
+    typeItem.textContent = pokeType.type.name
+    typeslist.appendChild(typeItem)
+  })
   pokeBack.appendChild(abilityList)
+  pokeBack.appendChild(typeslist)
   return pokeBack
 }
