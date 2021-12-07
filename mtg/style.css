@@ -106,6 +106,7 @@ a {
   transform: rotateY(
     180deg
   ); /* toggling whether this property is showing hook up a button to make the transform happen,  have to apply class */
+ transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1); 
 }
 
 .front {
