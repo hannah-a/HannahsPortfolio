@@ -4,6 +4,8 @@
 
 import { removeChildren } from "../utils/index.js";
 
+const allCats = [...pageOne, ...pageTwo]
+const pageOne = function pageOneFunction
 
 
 const mtgGrid = document.querySelector(".mtgGrid");
@@ -174,6 +176,19 @@ function populateNewFront(cat) {
   return figure;
 }
 
+
+
+// random cat card art_crop api https://api.scryfall.com/cards/random?as=grid&order=name&q=type%3Acat&version=art_crop
+/*function getRandomCatImg() {
+  getAPIData('https://api.scryfall.com/cards/random?as=grid&order=name&q=type%3Acat&version=art_crop').then((data) => {return data.image_uris.art_crop})
+}*/
+
+//create a combined array of both methods...
+//well I could filter and map to make a simpler object and then for each I will push the art_crop url into a new array, giving me an array of 234 image urls
+// var number = Math.floor(Math.random()*randomImage.length);
+//return document.getElementByClassName('result').innerHTML = '<img src="'+randomImage[number]+'"
+
+
 function populateNewBack(cat) {
   const catDiv = document.createElement("div");
   catDiv.className = "cardFace back newDiv";
@@ -182,7 +197,9 @@ function populateNewBack(cat) {
   const catType = document.createElement("h2"); //
   catType.textContent = cat.type
 
-
+  const catImage = document.createElement('span') 
+  catImage.className = 'result'
+  
   const catList = document.createElement("ul");
   cat.abilities.forEach((abilityItem) => {
     let listItem = document.createElement("li");
@@ -193,7 +210,7 @@ function populateNewBack(cat) {
   const catLevel = document.createElement('h3')
   
   catLevel.textContent = cat.level
-
+  catDiv.appendChild(catImage)
   catDiv.appendChild(catName)
   catDiv.appendChild(catType)
   catDiv.appendChild(catList)

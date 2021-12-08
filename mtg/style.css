@@ -123,7 +123,10 @@ figure img {
   width: 200px; /*keeps image inside*/
   border-radius: 10px;
 }
+img {
+  width: 100%;
 
+}
 figure {
     border-radius: 10px;
 }
