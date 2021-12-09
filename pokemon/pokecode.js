@@ -27,10 +27,13 @@ loadButton.addEventListener('click', () => {
   loadPokemon(100, 50)
 })
 
+const allPokemon = getAllSimplePokemon()
+
 function getAllSimplePokemon() {
   const allPokemon = []
   getAPIData(`https://pokeapi.co/api/v2/pokemon?limit=1118&offset=0`).then(
     async (data) => {
+      console.log(data.results.length)
       for (const pokemon of data.results) {
         await getAPIData(pokemon.url).then((pokeData) => {
           const mappedPokemon = {
@@ -41,7 +44,7 @@ function getAllSimplePokemon() {
             types: pokeData.types,
             weight: pokeData.weight,
           }
-          allPokemon.push({name: pokeData.name})
+          allPokemon.push(mappedPokemon)
         })
       }
     },
@@ -49,22 +52,15 @@ function getAllSimplePokemon() {
   return allPokemon
 }
 
-//const allSimplePokemon = getAllSimplePokemon()
-
-function getAllGrassPokemon() {
-  const allPokemon = getAllSimplePokemon()
-  allPokemon.forEach((pokemon) => {
-    console.log(pokemon)
-  })
-  //return allPokemon.filter((pokemon) => pokemon.types[0]?.type?.name === 'grass')
+function getAllPokemonByType(type) {
+  return allPokemon.filter((pokemon) => pokemon.types[0].type.name === type)
 }
-
-console.log(getAllSimplePokemon())
 
 const sortButton = document.querySelector('.sortButton')
 sortButton.addEventListener('click', () => {
   console.log('You clicked?')
-  getAllSimplePokemon()
+  const allByType = getAllPokemonByType('water')
+  allByType.forEach((item) => populatePokeCard(item))
 })
 
 /* First, get a reference to the pokemon choice button
