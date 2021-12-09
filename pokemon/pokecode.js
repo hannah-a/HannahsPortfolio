@@ -27,13 +27,12 @@ loadButton.addEventListener('click', () => {
   loadPokemon(100, 50)
 })
 
-const allPokemon = getAllSimplePokemon()
+const allPokemon = await getAllSimplePokemon()
 
-function getAllSimplePokemon() {
+async function getAllSimplePokemon() {
   const allPokemon = []
-  getAPIData(`https://pokeapi.co/api/v2/pokemon?limit=1118&offset=0`).then(
+  await getAPIData(`https://pokeapi.co/api/v2/pokemon?limit=1118&offset=0`).then(
     async (data) => {
-      console.log(data.results.length)
       for (const pokemon of data.results) {
         await getAPIData(pokemon.url).then((pokeData) => {
           const mappedPokemon = {
@@ -53,12 +52,12 @@ function getAllSimplePokemon() {
 }
 
 function getAllPokemonByType(type) {
-  return allPokemon.filter((pokemon) => pokemon.types[0].type.name === type)
+  return allPokemon.filter((pokemon) => pokemon.types[0].type.name == type)
 }
 
 const sortButton = document.querySelector('.sortButton')
 sortButton.addEventListener('click', () => {
-  const allByType = getAllPokemonByType('water')
+  const allByType = getAllPokemonByType('fire')
   allByType.forEach((item) => populatePokeCard(item))
 })
 
