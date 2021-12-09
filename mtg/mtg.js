@@ -4,9 +4,6 @@
 
 import { removeChildren } from "../utils/index.js";
 
-const allCats = [...pageOne, ...pageTwo]
-const pageOne = function pageOneFunction
-
 
 const mtgGrid = document.querySelector(".mtgGrid");
 const loadButton = document.querySelector(".loadCats");
@@ -63,6 +60,9 @@ function populateCard(singleCard) {
   mtgCard.addEventListener("click", () =>
     mtgCard.classList.toggle("is-flipped")
   );
+  mtgCard.addEventListener("mouseenter", () =>
+    mtgCard.classList.toggle("is-flipped")
+  );
 
   const front = populateCardFront(singleCard);
   const back = populateCardBack(singleCard);
@@ -71,6 +71,7 @@ function populateCard(singleCard) {
   mtgCard.appendChild(back);
   mtgScene.appendChild(mtgCard);
   mtgGrid.appendChild(mtgScene);
+
 }
 
 function populateCardFront(card) {
@@ -194,24 +195,29 @@ function populateNewBack(cat) {
   catDiv.className = "cardFace back newDiv";
   const catName = document.createElement("h1");
   catName.textContent = cat.name
+  catName.className = 'newName'
   const catType = document.createElement("h2"); //
   catType.textContent = cat.type
-
-  const catImage = document.createElement('span') 
-  catImage.className = 'result'
+  catName.className = 'newType'
+  const catImage = document.createElement('img') 
+  catImage.className = 'newImg'
+  catImage.src = 'https://c1.scryfall.com/file/scryfall-cards/art_crop/front/2/4/24c1706d-2faa-452b-a192-204386df29f6.jpg?1619395734'
   
   const catList = document.createElement("ul");
+  catList.className = 'newList'
   cat.abilities.forEach((abilityItem) => {
     let listItem = document.createElement("li");
+    listItem.className = 'newItem'
     listItem.textContent = abilityItem.ability.name;
     catList.appendChild(listItem);
   });
 
   const catLevel = document.createElement('h3')
-  
+  catLevel.className = 'newLevel'
   catLevel.textContent = cat.level
-  catDiv.appendChild(catImage)
+
   catDiv.appendChild(catName)
+  catDiv.appendChild(catImage)
   catDiv.appendChild(catType)
   catDiv.appendChild(catList)
   catDiv.appendChild(catLevel)

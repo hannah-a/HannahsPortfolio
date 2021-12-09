@@ -2,8 +2,9 @@
   margin: 0;
   box-sizing: border-box;
 }
+/* Start https://www.cursors-4u.com */ * {cursor: url(https://cur.cursors-4u.net/special/spe-5/spe440.cur), auto !important;} /* End https://www.cursors-4u.com */
 :root {
-  --main-blue: #3a677a;
+  --main-blue: #ff0000;
   --main-grey: #1d1d1f;
   --light-yellow: #f2cf63;
   --dark-yellow: #c59c4f;
@@ -21,13 +22,7 @@ html {
 body {
   font-family: basic-sans, sans-serif;
   font-weight: 400;
-  background: rgb(2, 0, 36);
-  background: linear-gradient(
-    90deg,
-    rgba(2, 0, 36, 1) 0%,
-    rgba(9, 9, 121, 1) 23%,
-    rgba(255, 0, 0, 1) 59%
-  );
+  background: white;
 }
 
 @media (max-width: 1200px) {
@@ -72,18 +67,55 @@ a {
   text-decoration: none;
 }
 
+/* header */
 
+header {
+  height: 20vh;
+  padding-top: 20vh;
+  background: rgb(255,255,255);
+  text-align: center;
+  font-size: 3rem;
+}
+
+header h1 {
+  color: red;
+}
+
+button {
+  margin-top: 2rem;
+  padding: 2rem;
+  border-radius: 50%;
+  color: white;
+  background-color: black;
+  border-style: none;
+  font-size: 2rem;
+}
+
+button:hover {
+  box-shadow: 0px 6px 5px red;
+}
 /* Magic of the Gathering  */
 .mtgGrid {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+  height: fit-content;
+  background-image: url(https://us.123rf.com/450wm/cattallina/cattallina1305/cattallina130500011/19621000-yellow-staring-cat-eyes-vector-illustration.jpg?ver=6);
+  background-size: 50vw;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-top: 35vh;
+  margin-bottom: 10vh;
 }
-
+main {
+ min-height: 80vh;
+}
 .scene {
   width: 200px;
   height: 260px;
   margin: 0.5em;
   perspective: 600px;
+  margin: 2rem;
 }
 
 .card {
@@ -107,7 +139,8 @@ a {
   transform: rotateY(
     180deg
   ); /* toggling whether this property is showing hook up a button to make the transform happen,  have to apply class */
- transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1); 
+ transition-timing-function: ease-out;
+
 }
 
 .front {
@@ -115,7 +148,9 @@ a {
 }
 
 .back {
-  background: mediumseagreen;
+  background-image: url(https://wallpapercave.com/wp/wp5926311.jpg);
+  background-repeat: no-repeat;
+  background-size: 100%;
   transform: rotateY(180deg);
 }
 
@@ -123,13 +158,53 @@ figure img {
   width: 200px; /*keeps image inside*/
   border-radius: 10px;
 }
-img {
-  width: 100%;
 
-}
 figure {
     border-radius: 10px;
 }
+
+/* New Cat Card */
+
+.newDiv {
+  padding: 1rem;
+  margin-top: 2rem;
+}
+.newName {
+  background-color: rgb(209, 209, 209);
+}
+.newImg {
+  width: 100%;
+  border: 5px solid white;
+}
+
+.newList {
+  list-style: none;
+}
+
+.newLevel {
+ position: relative;
+ left: 130px;
+ top: 30px;
+  border: 3px solid black;
+  width: fit-content;
+  border-radius: 2px;
+  padding: 3px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* Footer  */
 #contact {
   display: flex;
@@ -154,7 +229,7 @@ figure {
 }
 
 #contact div a {
-  color: var(--light-yellow);
+  color: white;
   padding: 2rem;
   font-size: 1.5rem;
   text-shadow: 2px 2px 1px var(--main-grey);
@@ -176,7 +251,7 @@ footer {
   text-align: center;
   font-size: 1.5rem;
   color: white;
-  background-color: var(--main-grey);
+  background-color: var(--main-brown);
   padding: 1rem 0;
 }
 
