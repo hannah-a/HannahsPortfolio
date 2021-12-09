@@ -22,14 +22,18 @@ function getCatsArray() {
     for (const card of catData.data) {
       if (card.hasOwnProperty('card_faces')) {
       const specialCat = {
-        name: card.name,
-        artcrop: card.card_faces[0].image_uris.art_crop
+        name: card.card_faces[0].name,
+        artcrop: card.card_faces[0].image_uris.art_crop,
+        cardimg: card.card_faces[0].image_uris.normal,
+        rarity: card.rarity
       }
       allCats.push(specialCat)
       } else {
       const mappedCat = {
         name: card.name,
-        artcrop: card.image_uris.art_crop
+        artcrop: card.image_uris.art_crop,
+        cardimg: card.image_uris.normal,
+        rarity: card.rarity
       }
       allCats.push(mappedCat)}
     }
@@ -40,7 +44,9 @@ function getCatsArray() {
     for (const card of catData.data) {
       const mappedCat = {
         name: card.name,
-        artcrop: card.image_uris.art_crop//stops at card 119 because the card is two faced and has two seperate objects in a card_faces property. Only two face card in the api call. 
+        artcrop: card.image_uris.art_crop,
+        cardimg: card.image_uris.normal,
+        rarity: card.rarity
       }
       allCats.push(mappedCat)
     }
@@ -135,9 +141,11 @@ function populateCardBack(card) {
   mtgBack.className = "cardFace back";
   const imgBack = document.createElement("img");
   imgBack.src = card.image_uris.normal
-
+  //const button = document.createElement('button')
+ // button.textContent = 'Enlarge'
+ // button.className = 'newButton'
+ // mtgBack.appendChild(button)
   mtgBack.appendChild(imgBack);
-
   return mtgBack;
 }
 
@@ -308,49 +316,3 @@ function populateNewBack(cat) {
 
   return catDiv;
 }
-
-//make the random image in the cat creator function
-//insert the link for more information about the cat card onto the card
-
-//combine the two api calls into one variable of data,
-
-//simplify that data
-
-//use the simplified function of data to make a select button that will sort on rarity or color
-
-//using the reduce function on the simplified data to see which cat has the highest power/toughness ratio, to find the cards and push them to an empty array and then display that array with populate(Cards)
-
-//
-
-/*a condition followed by a question mark (?), then an expression to execute if the condition is truthy followed by a colon (:), and finally the expression to execute if the condition is falsy.*/
-
-/*
-const biggestWeasel = simplifiedMembers().reduce(
-  (acc, senator) =>
-    (acc.missedVotesPct || 0) > senator.missedVotesPct ? acc : senator,
-  {}
-); 
-
-function simplifiedMembers(chamberFilter -naming the argument) {
-  const filteredArray = members.filter((member) /naming the array element =>
-    chamberFilter ? member.short_title === chamberFilter : member);
-  
-
-  return filteredArray.map((member) => {
-    const middleName = member.middle_name ? ` ${member.middle_name} ` : ` `;
-    return {
-      id: member.id,
-      name: `${member.first_name}${middleName}${member.last_name} (${member.party})`,
-      short_title: member.short_title,
-      party: member.party,
-      imgURL: `https://www.govtrack.us/static/legislator-photos/${member.govtrack_id}-100px.jpeg`,
-      gender: member.gender,
-      seniority: +member.seniority,
-      missedVotesPct: member.missed_votes_pct,
-      loyaltyPct: member.votes_with_party_pct,
-      state: member.state,
-      url: member.url,
-    };
-  });
-}
-*/

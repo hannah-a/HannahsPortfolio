@@ -79,9 +79,11 @@ header {
 
 header h1 {
   color: red;
+  font-size: 200%;
+  font-weight: 700;
 }
 
-button {
+header button {
   margin-top: 2rem;
   padding: 2rem;
   border-radius: 50%;
@@ -94,6 +96,8 @@ button {
 button:hover {
   box-shadow: 0px 6px 5px red;
 }
+
+
 /* Magic of the Gathering  */
 .mtgGrid {
   display: flex;
@@ -101,7 +105,7 @@ button:hover {
   justify-content: center;
   height: fit-content;
   background-image: url(https://us.123rf.com/450wm/cattallina/cattallina1305/cattallina130500011/19621000-yellow-staring-cat-eyes-vector-illustration.jpg?ver=6);
-  background-size: 50vw;
+  background-size: 40vw;
   background-repeat: no-repeat;
   background-position: center;
   margin-top: 35vh;
@@ -112,7 +116,7 @@ main {
 }
 .scene {
   width: 200px;
-  height: 260px;
+  height: 279px;
   margin: 0.5em;
   perspective: 600px;
   margin: 2rem;
@@ -144,7 +148,7 @@ main {
 }
 
 .front {
-  background: magenta;
+  background: red;
 }
 
 .back {
@@ -166,8 +170,7 @@ figure {
 /* New Cat Card */
 
 .newDiv {
-  padding: 1rem;
-  margin-top: 2rem;
+  
 }
 .newName {
   background-color: rgb(209, 209, 209);
@@ -218,10 +221,12 @@ figure {
 #contact h2 {
   font-size: 4vw;
   padding-bottom: 2rem;
+  color: white;
 }
 #contact p {
   font-size: 2rem;
   padding-bottom: 1.7rem;
+  color: white;
 }
 #contact div {
   display: flex;
