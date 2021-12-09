@@ -12,6 +12,46 @@ loadButton.addEventListener("click", () => {
   loadMTG();
 });
 
+const allCats = getCatsArray()
+
+function getCatsArray() {
+ const allCats = []
+ getAPIData(//only loads 175 at a time
+    `https://api.scryfall.com/cards/search?as=grid&order=name&q=%28type%3Acreature+type%3Acat%29&format=json`
+  ).then((catData) => {
+    for (const card of catData.data) {
+      if (card.hasOwnProperty('card_faces')) {
+      const specialCat = {
+        name: card.name,
+        artcrop: card.card_faces[0].image_uris.art_crop
+      }
+      allCats.push(specialCat)
+      } else {
+      const mappedCat = {
+        name: card.name,
+        artcrop: card.image_uris.art_crop
+      }
+      allCats.push(mappedCat)}
+    }
+  });
+  getAPIData(//next page of cats
+    `https://api.scryfall.com/cards/search?format=json&include_extras=false&include_multilingual=false&order=name&page=2&q=%28type%3Acreature+type%3Acat%29&unique=cards`
+  ).then((catData) => {
+    for (const card of catData.data) {
+      const mappedCat = {
+        name: card.name,
+        artcrop: card.image_uris.art_crop//stops at card 119 because the card is two faced and has two seperate objects in a card_faces property. Only two face card in the api call. 
+      }
+      allCats.push(mappedCat)
+    }
+  });
+  return allCats
+}
+
+console.log(allCats)
+
+//make if else statements for loadmtg and this one to do different things if card.hasOwnProperty('card_faces')
+
 const moreButton = document.querySelector(".moreCats");
 moreButton.addEventListener("click", () => {
   removeChildren(mtgGrid);
@@ -40,8 +80,11 @@ function loadMTG() {
     `https://api.scryfall.com/cards/search?as=grid&order=name&q=%28type%3Acreature+type%3Acat%29&format=json`
   ).then((mtgData) => {
     for (const card of mtgData.data) {
-      //inside for loop, just want the results array, will give each pokemon one at a time
-      populateCard(card); //I already have the data so I don't think I need to get the data from the url
+      if (card.hasOwnProperty('card_faces')) {
+      populateSpecialCard(card)
+      } else {
+      populateCard(card); 
+      }
     }
   });
 }
@@ -91,7 +134,7 @@ function populateCardBack(card) {
   const mtgBack = document.createElement("figure");
   mtgBack.className = "cardFace back";
   const imgBack = document.createElement("img");
-  imgBack.src = card.image_uris.normal;
+  imgBack.src = card.image_uris.normal
 
   mtgBack.appendChild(imgBack);
 
@@ -99,6 +142,47 @@ function populateCardBack(card) {
 }
 
 
+//For that one special card that broke everything because it wanted to be special
+
+function populateSpecialCard(singleCard) {
+  const mtgScene = document.createElement("div");
+  mtgScene.className = "scene";
+  const mtgCard = document.createElement("div");
+  mtgCard.className = "card";
+  mtgCard.addEventListener("click", () =>
+    mtgCard.classList.toggle("is-flipped")
+  );
+  mtgCard.addEventListener("mouseenter", () =>
+    mtgCard.classList.toggle("is-flipped")
+  );
+
+  const front = populateSpecialFront(singleCard);
+  const back = populateSpecialBack(singleCard);
+
+  mtgCard.appendChild(front);
+  mtgCard.appendChild(back);
+  mtgScene.appendChild(mtgCard);
+  mtgGrid.appendChild(mtgScene);
+
+}
+
+function populateSpecialFront(card) {
+  const mtgFront = document.createElement("figure");
+  mtgFront.className = "cardFace front";
+  const imgFront = document.createElement("img");
+  imgFront.src = card.card_faces[0].image_uris.normal
+  mtgFront.appendChild(imgFront);
+  return mtgFront;
+}
+
+function populateSpecialBack(card) {
+  const mtgBack = document.createElement("figure");
+  mtgBack.className = "cardFace back";
+  const imgBack = document.createElement("img");
+  imgBack.src = card.card_faces[1].image_uris.normal
+  mtgBack.appendChild(imgBack);
+  return mtgBack;
+}
 
 
 
