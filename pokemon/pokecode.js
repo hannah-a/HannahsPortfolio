@@ -25,6 +25,7 @@ const loadButton = document.querySelector('.loadPokemon')
 loadButton.addEventListener('click', () => {
   removeChildren(pokeGrid)
   loadPokemon(100, 50)
+  setTimeout(() => loadPokemon(100, 50), 3000)
 })
 
 const allPokemon = await getAllSimplePokemon()
@@ -57,7 +58,15 @@ function getAllPokemonByType(type) {
 
 const sortButton = document.querySelector('.sortButton')
 sortButton.addEventListener('click', () => {
-  const allByType = getAllPokemonByType('fire')
+  const allByType = getAllPokemonByType('water')
+  allByType.forEach((item) => populatePokeCard(item))
+})
+
+const typeSelector = document.querySelector('#typeSelector')
+typeSelector.addEventListener('change', (event) => {
+  const usersTypeChoice = event.target.value.toLowerCase()
+  const allByType = getAllPokemonByType(usersTypeChoice)
+  removeChildren(pokeGrid)
   allByType.forEach((item) => populatePokeCard(item))
 })
 
@@ -241,7 +250,7 @@ function populateCardBack(pokemon) {
   })
   pokeBack.appendChild(abilityList)
   pokeBack.appendChild(typeslist)
-  
+
   //  add HP and height and weight
   if (pokemon.stats) {
     const pokeHP = document.createElement('h4')
