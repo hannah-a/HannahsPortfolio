@@ -10,11 +10,11 @@ function getAPIData(url) {
 
 function loadPokemon(offset = 0, limit = 25) {
   getAPIData(
-    `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`
+    `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`,
   ).then(async (data) => {
     for (const pokemon of data.results) {
       await getAPIData(pokemon.url).then((pokeData) =>
-        populatePokeCard(pokeData)
+        populatePokeCard(pokeData),
       )
     }
   })
@@ -31,23 +31,23 @@ const allPokemon = await getAllSimplePokemon()
 
 async function getAllSimplePokemon() {
   const allPokemon = []
-  await getAPIData(`https://pokeapi.co/api/v2/pokemon?limit=1118&offset=0`).then(
-    async (data) => {
-      for (const pokemon of data.results) {
-        await getAPIData(pokemon.url).then((pokeData) => {
-          const mappedPokemon = {
-            abilities: pokeData.abilities,
-            height: pokeData.height,
-            id: pokeData.id,
-            name: pokeData.name,
-            types: pokeData.types,
-            weight: pokeData.weight,
-          }
-          allPokemon.push(mappedPokemon)
-        })
-      }
-    },
-  )
+  await getAPIData(
+    `https://pokeapi.co/api/v2/pokemon?limit=1118&offset=0`,
+  ).then(async (data) => {
+    for (const pokemon of data.results) {
+      await getAPIData(pokemon.url).then((pokeData) => {
+        const mappedPokemon = {
+          abilities: pokeData.abilities,
+          height: pokeData.height,
+          id: pokeData.id,
+          name: pokeData.name,
+          types: pokeData.types,
+          weight: pokeData.weight,
+        }
+        allPokemon.push(mappedPokemon)
+      })
+    }
+  })
   return allPokemon
 }
 
@@ -118,7 +118,7 @@ function getTypesArray(spacedString) {
 
 class Pokemon {
   constructor(name, height, weight, abilities, types) {
-    ;(this.id = 100),
+    ;(this.id = 9001),
       (this.name = name),
       (this.height = height),
       (this.weight = weight),
@@ -149,7 +149,11 @@ function populateCardFront(pokemon) {
   const pokeFront = document.createElement('figure')
   pokeFront.className = 'cardFace front'
   const pokeImg = document.createElement('img')
-  pokeImg.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png`
+  if (pokemon.id === 9001) {
+    pokeImg.src = '../images/pokeball.png'
+  } else {
+    pokeImg.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png`
+  }
 
   const pokeCaption = document.createElement('figcaption')
 
@@ -237,5 +241,23 @@ function populateCardBack(pokemon) {
   })
   pokeBack.appendChild(abilityList)
   pokeBack.appendChild(typeslist)
+  
+  //  add HP and height and weight
+  if (pokemon.stats) {
+    const pokeHP = document.createElement('h4')
+    pokeHP.textContent = `HP: ${pokemon.stats[0].base_stat}`
+    pokeBack.appendChild(pokeHP)
+  }
+
+  const pokeHeight = document.createElement('h5')
+  pokeHeight.textContent = `Height: ${pokemon.height}`
+
+  const pokeWeight = document.createElement('h5')
+  pokeWeight.textContent = `Weight: ${pokemon.weight}`
+
+
+
+  pokeBack.appendChild(pokeHeight)
+  pokeBack.appendChild(pokeWeight)
   return pokeBack
 }
