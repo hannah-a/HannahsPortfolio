@@ -10,23 +10,61 @@ function getAPIData(url) {
 
 function loadPokemon(offset = 0, limit = 25) {
   getAPIData(
-    `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`,
+    `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`
   ).then(async (data) => {
     for (const pokemon of data.results) {
       await getAPIData(pokemon.url).then((pokeData) =>
-        populatePokeCard(pokeData),
+        populatePokeCard(pokeData)
       )
     }
   })
 }
-
-loadPokemon(200, 25)
 
 const pokeGrid = document.querySelector('.pokeGrid')
 const loadButton = document.querySelector('.loadPokemon')
 loadButton.addEventListener('click', () => {
   removeChildren(pokeGrid)
   loadPokemon(100, 50)
+})
+
+function getAllSimplePokemon() {
+  const allPokemon = []
+  getAPIData(`https://pokeapi.co/api/v2/pokemon?limit=1118&offset=0`).then(
+    async (data) => {
+      for (const pokemon of data.results) {
+        await getAPIData(pokemon.url).then((pokeData) => {
+          const mappedPokemon = {
+            abilities: pokeData.abilities,
+            height: pokeData.height,
+            id: pokeData.id,
+            name: pokeData.name,
+            types: pokeData.types,
+            weight: pokeData.weight,
+          }
+          allPokemon.push({name: pokeData.name})
+        })
+      }
+    },
+  )
+  return allPokemon
+}
+
+//const allSimplePokemon = getAllSimplePokemon()
+
+function getAllGrassPokemon() {
+  const allPokemon = getAllSimplePokemon()
+  allPokemon.forEach((pokemon) => {
+    console.log(pokemon)
+  })
+  //return allPokemon.filter((pokemon) => pokemon.types[0]?.type?.name === 'grass')
+}
+
+console.log(getAllSimplePokemon())
+
+const sortButton = document.querySelector('.sortButton')
+sortButton.addEventListener('click', () => {
+  console.log('You clicked?')
+  getAllSimplePokemon()
 })
 
 /* First, get a reference to the pokemon choice button
@@ -49,13 +87,15 @@ newButton.addEventListener('click', () => {
   let pokeAbilities = prompt(
     'What are your Pokemon abilities? (use a comma separated list)',
   )
-  let pokeTypes = prompt("What are your Pokemon's types? (up to 2 types separated by a space)")
+  let pokeTypes = prompt(
+    "What are your Pokemon's types? (up to 2 types separated by a space)",
+  )
   let newPokemon = new Pokemon(
     pokeName,
     pokeHeight,
     pokeWeight,
     getAbilitiesArray(pokeAbilities),
-    getTypesArray(pokeTypes)
+    getTypesArray(pokeTypes),
   )
   populatePokeCard(newPokemon)
 })
@@ -76,20 +116,20 @@ function getTypesArray(spacedString) {
   return tempArray.map((typeName) => {
     return {
       type: {
-        name: typeName
-      }
+        name: typeName,
+      },
     }
   })
 }
 
 class Pokemon {
   constructor(name, height, weight, abilities, types) {
-    this.id = 100,
-      this.name = name,
-      this.height = height,
-      this.weight = weight,
-      this.abilities = abilities,
-      this.types = types
+    ;(this.id = 100),
+      (this.name = name),
+      (this.height = height),
+      (this.weight = weight),
+      (this.abilities = abilities),
+      (this.types = types)
   }
 }
 
@@ -132,12 +172,14 @@ function typesBackground(pokemon, card) {
   let pokeType1 = pokemon.types[0].type.name
   let pokeType2 = pokemon.types[1]?.type.name
   console.log(pokeType1, pokeType2)
-  if(!pokeType2) {
+  if (!pokeType2) {
     card.style.setProperty('background', getPokeTypeColor(pokeType1))
   } else {
     card.style.setProperty(
       'background',
-      `linear-gradient(${getPokeTypeColor(pokeType1)}, ${getPokeTypeColor(pokeType2)})`,
+      `linear-gradient(${getPokeTypeColor(pokeType1)}, ${getPokeTypeColor(
+        pokeType2,
+      )})`,
     )
   }
 }
@@ -169,12 +211,12 @@ function getPokeTypeColor(pokeType) {
     case 'electric':
       color = '#C8FF00'
       break
-      case 'psychic':
-        color = 'pink'
-        break
-        case 'ground':
-        color = 'brown'
-        break
+    case 'psychic':
+      color = 'pink'
+      break
+    case 'ground':
+      color = 'brown'
+      break
     default:
       color = '#888888'
   }
