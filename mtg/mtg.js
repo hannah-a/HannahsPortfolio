@@ -12,7 +12,7 @@ loadButton.addEventListener("click", () => {
   loadMTG();
 });
 
-const allCats = getCatsArray()
+const allCats = await getCatsArray()
 
 function getCatsArray() {
  const allCats = []
@@ -54,22 +54,9 @@ function getCatsArray() {
   return allCats
 }
 
-console.log(allCats)
 
 //make if else statements for loadmtg and this one to do different things if card.hasOwnProperty('card_faces')
 
-const moreButton = document.querySelector(".moreCats");
-moreButton.addEventListener("click", () => {
-  removeChildren(mtgGrid);
-  getAPIData(
-    `https://api.scryfall.com/cards/search?format=json&include_extras=false&include_multilingual=false&order=name&page=2&q=%28type%3Acreature+type%3Acat%29&unique=cards`
-  ).then((mtgData) => {
-    for (const card of mtgData.data) {
-      //inside for loop, just want the results array, will give each pokemon one at a time
-      populateCard(card); //I already have the data so I don't think I need to get the data from the url
-    }
-  });
-});
 
 function getAPIData(url) {
   //removing async makes data come in order
@@ -91,6 +78,14 @@ function loadMTG() {
       } else {
       populateCard(card); 
       }
+    }
+  })
+  getAPIData(
+    `https://api.scryfall.com/cards/search?format=json&include_extras=false&include_multilingual=false&order=name&page=2&q=%28type%3Acreature+type%3Acat%29&unique=cards`
+  ).then((mtgData) => {
+    for (const card of mtgData.data) {
+      //inside for loop, just want the results array, will give each pokemon one at a time
+      populateCard(card); //I already have the data so I don't think I need to get the data from the url
     }
   });
 }
@@ -316,3 +311,6 @@ function populateNewBack(cat) {
 
   return catDiv;
 }
+
+
+//sort buttons 

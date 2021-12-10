@@ -27,6 +27,24 @@ function loadPokemon(offset = 0, limit = 25) {
   });
 }
 
+function populatePokeCard(singlePokemon) {
+  const pokeScene = document.createElement('div')
+  pokeScene.className = 'scene'
+  const pokeCard = document.createElement('div')
+  pokeCard.className = 'card'
+  pokeCard.addEventListener('click', () =>
+    pokeCard.classList.toggle('is-flipped'),
+  )
+
+  const front = populateCardFront(singlePokemon)
+  const back = populateCardBack(singlePokemon)
+
+  pokeCard.appendChild(front)
+  pokeCard.appendChild(back)
+  pokeScene.appendChild(pokeCard)
+  pokeGrid.appendChild(pokeScene)
+}
+
 const pokeGrid = document.querySelector('.pokeGrid')
 const loadButton = document.querySelector('.loadPokemon')
 loadButton.addEventListener('click', () => {
@@ -68,6 +86,7 @@ sortButton.addEventListener('click', () => {
   const allByType = getAllPokemonByType('water')
   allByType.forEach((item) => populatePokeCard(item))
 })
+
 
 const typeSelector = document.querySelector('#typeSelector')
 typeSelector.addEventListener('change', (event) => {
@@ -171,7 +190,7 @@ function populateCardFront(pokemon) {
 function typesBackground(pokemon, card) {
   let pokeType1 = pokemon.types[0].type.name
   let pokeType2 = pokemon.types[1]?.type.name
-  console.log(pokeType1, pokeType2)
+
   if (!pokeType2) {
     card.style.setProperty('background', getPokeTypeColor(pokeType1))
   } else {
