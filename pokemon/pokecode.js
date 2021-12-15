@@ -76,6 +76,7 @@ async function getAllSimplePokemon() {
   })
   return allPokemon
 }
+console.log(allPokemon)
 
 function getAllPokemonByType(type) {
   return allPokemon.filter((pokemon) => pokemon.types[0].type.name == type)

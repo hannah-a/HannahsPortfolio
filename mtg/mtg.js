@@ -12,7 +12,7 @@ loadButton.addEventListener("click", () => {
   loadMTG();
 });
 
-const allCats = await getCatsArray()
+
 
 function getCatsArray() {
  const allCats = []
@@ -26,6 +26,9 @@ function getCatsArray() {
         artcrop: card.card_faces[0].image_uris.art_crop,
         cardimg: card.card_faces[0].image_uris.normal,
         rarity: card.rarity
+        //card_faces: (card) => { if(card.hasOwnProperty('card_faces')){
+       //   return true;
+       // }}
       }
       allCats.push(specialCat)
       } else {
@@ -34,6 +37,7 @@ function getCatsArray() {
         artcrop: card.image_uris.art_crop,
         cardimg: card.image_uris.normal,
         rarity: card.rarity
+       // card_faces: false
       }
       allCats.push(mappedCat)}
     }
@@ -47,16 +51,37 @@ function getCatsArray() {
         artcrop: card.image_uris.art_crop,
         cardimg: card.image_uris.normal,
         rarity: card.rarity
+       // card_faces: false
       }
       allCats.push(mappedCat)
     }
   });
   return allCats
 }
+const allCats = await getCatsArray() 
 
+function getAllCatsByType(type) {
+  const allcatsvar = allCats.filter((cat) => cat.rarity === type)
+  console.log(allcatsvar)
+  return allcatsvar
+}
 
-//make if else statements for loadmtg and this one to do different things if card.hasOwnProperty('card_faces')
-
+const typeSelector = document.querySelector('#typeSelector')
+typeSelector.addEventListener('change', (event) => {
+  const usersTypeChoice = event.target.value.toLowerCase()
+  const allByType = getAllCatsByType(usersTypeChoice)
+  removeChildren(mtgGrid)
+  allByType.forEach((item) => {
+    //console.log(item.hasOwnProperty('card_faces'))
+    console.log(item)
+    if("undefined" === typeof(item["card_faces"])) 
+    {
+      populateCard(item)
+    } else {
+    populateSpecialCard(item)
+  }
+})
+})
 
 function getAPIData(url) {
   //removing async makes data come in order
@@ -67,7 +92,7 @@ function getAPIData(url) {
   }
 }
 
-function loadMTG() {
+function loadMTG1() {
   //without a function, js will just read it and call it but with a button you can control it so put it in function
   getAPIData(
     `https://api.scryfall.com/cards/search?as=grid&order=name&q=%28type%3Acreature+type%3Acat%29&format=json`
@@ -90,7 +115,48 @@ function loadMTG() {
   });
 }
 
-
+function loadMTG() {
+  getAPIData(//only loads 175 at a time
+     `https://api.scryfall.com/cards/search?as=grid&order=name&q=%28type%3Acreature+type%3Acat%29&format=json`
+   ).then((catData) => {
+     for (const card of catData.data) {
+       if (card.hasOwnProperty('card_faces')) {
+       const specialCat = {
+         name: card.card_faces[0].name,
+         artcrop: card.card_faces[0].image_uris.art_crop,
+         cardimg: card.card_faces[0].image_uris.normal,
+         rarity: card.rarity
+         //card_faces: (card) => { if(card.hasOwnProperty('card_faces')){
+        //   return true;
+        // }}
+       }
+       populateSpecialCard(specialCat)
+       } else {
+       const mappedCat = {
+         name: card.name,
+         artcrop: card.image_uris.art_crop,
+         cardimg: card.image_uris.normal,
+         rarity: card.rarity
+        // card_faces: false
+       }
+       populateCard(mappedCat)}
+     }
+   });
+   getAPIData(//next page of cats
+     `https://api.scryfall.com/cards/search?format=json&include_extras=false&include_multilingual=false&order=name&page=2&q=%28type%3Acreature+type%3Acat%29&unique=cards`
+   ).then((catData) => {
+     for (const card of catData.data) {
+       const mappedCat = {
+         name: card.name,
+         artcrop: card.image_uris.art_crop,
+         cardimg: card.image_uris.normal,
+         rarity: card.rarity
+        // card_faces: false
+       }
+       populateCard(mappedCat)
+     }
+   });
+ }
 
 
 // Load magic cats buttons
@@ -100,7 +166,7 @@ function populateCard(singleCard) {
   const mtgScene = document.createElement("div");
   mtgScene.className = "scene";
   const mtgCard = document.createElement("div");
-  mtgCard.className = "card";
+  mtgCard.className = "catcard";
   mtgCard.addEventListener("click", () =>
     mtgCard.classList.toggle("is-flipped")
   );
@@ -135,7 +201,7 @@ function populateCardBack(card) {
   const mtgBack = document.createElement("figure");
   mtgBack.className = "cardFace back";
   const imgBack = document.createElement("img");
-  imgBack.src = card.image_uris.normal
+  imgBack.src = card.cardimg;
   //const button = document.createElement('button')
  // button.textContent = 'Enlarge'
  // button.className = 'newButton'
@@ -151,7 +217,7 @@ function populateSpecialCard(singleCard) {
   const mtgScene = document.createElement("div");
   mtgScene.className = "scene";
   const mtgCard = document.createElement("div");
-  mtgCard.className = "card";
+  mtgCard.className = "catcard";
   mtgCard.addEventListener("click", () =>
     mtgCard.classList.toggle("is-flipped")
   );
@@ -173,7 +239,7 @@ function populateSpecialFront(card) {
   const mtgFront = document.createElement("figure");
   mtgFront.className = "cardFace front";
   const imgFront = document.createElement("img");
-  imgFront.src = card.card_faces[0].image_uris.normal
+  imgFront.src = "https://s3.amazonaws.com/ccg-corporate-production/news-images/Back0_Sheet%20(F)20201203163456929.jpg";
   mtgFront.appendChild(imgFront);
   return mtgFront;
 }
@@ -182,7 +248,7 @@ function populateSpecialBack(card) {
   const mtgBack = document.createElement("figure");
   mtgBack.className = "cardFace back";
   const imgBack = document.createElement("img");
-  imgBack.src = card.card_faces[1].image_uris.normal
+  imgBack.src = card.cardimg
   mtgBack.appendChild(imgBack);
   return mtgBack;
 }
@@ -240,7 +306,7 @@ function populateNewCard(cat) {
   const scene = document.createElement("div");
   scene.className = "scene";
   const card = document.createElement("div");
-  card.className = "card";
+  card.className = "catcard";
   card.addEventListener("click", () =>
     card.classList.toggle("is-flipped")
   );
