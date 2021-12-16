@@ -83,32 +83,39 @@ figcaption {
   background-color: var(--main-brown);
   position: fixed;
   z-index: 2;
+
 }
 
- .nav-list {
+.nav-list {
   display: flex;
   justify-content: flex-start;
   list-style-type: none;
   margin-right: 1rem;
+  position: relative;
+  right: 4rem;
+}
+.fa-angle-left {
+  margin: 1rem 2rem 1rem 1rem;
 }
 
- .nav-list a {
+.nav-list a {
   display: block;
   color: #f0f0f0;
   padding: 2rem;
   font-size: 2vw;
 }
- @media (max-width: 428px) {
+@media (max-width: 428px) {
   .nav-list a {
-   font-size: 7vw;
+    font-size: 7vw;
   }
 }
- 
- .nav-list a:hover {
+
+.nav-list a:hover {
   background-color: var(--main-blue);
 }
- 
- a {
+
+
+a {
   text-decoration: none;
 }
 

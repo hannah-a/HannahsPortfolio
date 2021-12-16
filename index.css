@@ -10,7 +10,7 @@
  --light-grey: #f2f2f2;
  --main-brown: #0e0500;
 --dark-green: #164929;
---light-green: #578067;
+--light-green: #2b8b50;
 --light-grey: #f2f7f7;
 --light-pink: #eed9ea;
 }
@@ -103,7 +103,6 @@ a {
  color: var(--dark-green);
  padding-top: 3rem;
  font-size: 5rem;
- 
 }
 
 #welcome-section i:hover {

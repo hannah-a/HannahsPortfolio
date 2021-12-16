@@ -55,7 +55,10 @@ body {
     justify-content: flex-start;
     list-style-type: none;
     margin-right: 1rem;
-}
+  }
+  .fa-angle-left {
+    margin: 1rem 2rem 1rem 1rem;
+  }
 
 .nav-list a {
     display: block;
@@ -100,9 +103,10 @@ a {
 }
 .nav {
     overflow-y: scroll;
+    overflow-x: hidden;
     white-space: nowrap;
     height: 400px;
-    width: 25vw;
+    width: 30vw;
 }
 
 .navList {

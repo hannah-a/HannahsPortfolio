@@ -54,6 +54,9 @@ body {
   list-style-type: none;
   margin-right: 1rem;
 }
+.fa-angle-left {
+  margin: 1rem 2rem 1rem 1rem;
+}
 
 .nav-list a {
   display: block;

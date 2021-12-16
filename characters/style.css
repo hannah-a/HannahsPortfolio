@@ -8,7 +8,7 @@
   --light-yellow: #f2cf63;
   --dark-yellow: #c59c4f;
   --light-grey: #f2f2f2;
-  --main-brown: #0e0500;
+  --main-brown: #000000;
  --dark-green: #164929;
  --light-green: #578067;
  --light-grey: #f2f7f7;
@@ -33,7 +33,9 @@
  body {
   font-family: basic-sans, sans-serif;
   font-weight: 400;
-  background-color: var(--main-grey);
+  background: #000000; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #000000, #434343); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #000000, #434343); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
  
  @media (max-width: 1200px) {
@@ -43,10 +45,9 @@
 }
 
 .EverythingContainer {
-  background-color: var(--main-grey);
   display: grid;
   grid-template-columns: 50vw 50vw;
-  grid-template-rows: 80vh 20vh;
+  grid-template-rows: 75vh 25vh;
   grid-template-areas:
   "Title Characters"
   "buttons main"
@@ -66,24 +67,27 @@ main {
  
 }
 main::-webkit-scrollbar {
-  background: black;
+  background: rgb(53, 53, 53);
   border-radius: 100px;
-  width: 10px;
-  box-shadow: 2px 2px 2px inset rgb(27, 27, 27);
+  width: 20px;
+  
  
 }
 main::-webkit-scrollbar-thumb {
   background-image: linear-gradient(180deg, #ff0000 0%, #0044ff 99%);
   border-radius: 100px;
+  box-shadow: 2px 2px 2px inset rgb(27, 27, 27);
+  min-height: 40px;
 }
  
 h1 {
   grid-area: Title;
   font-size: 10vh;
-  padding: 16vw 2vw 0 2vw;
+  padding: 12vw 2vw 6vw 2vw;
   color: var(--light-yellow);
   text-shadow: 0px 6px 8px black;
   text-align: center;
+  margin-left: 1.9rem;
 }
 
 header {
@@ -92,22 +96,26 @@ header {
   flex-direction: column;
   align-items: center;
   position: relative;
-  bottom: 10vh;
+  bottom: 6vh;
 }
 
 button {
   font-family: basic-sans;
   font-size: medium;
-  font-weight: 900;
+  font-weight: 700;
   padding: 1rem;
   background-color: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(255,255,255,1) 100%);
   border-radius: 40px;
   height: 8rem;
   width: 50%;
+  margin: .5rem;
+  border: none;
 }
 
 button:hover {
   background-image: linear-gradient(180deg, #ff0000 0%, #0044ff 99%);
+  box-shadow: 2px 2px 5px inset rgb(0, 0, 0);
+  color: white;
 }
 
 
@@ -143,15 +151,20 @@ figcaption {
   list-style-type: none;
   margin-right: 1rem;
 }
-
+.fa-angle-left {
+  margin: 1rem 2rem 1rem 2rem;
+}
 .nav-list a {
   display: block;
   color: #f0f0f0;
-  padding: 2rem;
+  padding: 2rem 2rem 2rem 0;
   font-size: 2vw;
+  position: relative;
+  right: 4rem;
 }
 
- @media (max-width: 428px) {
+ 
+@media (max-width: 428px) {
   .nav-list a {
    font-size: 7vw;
   }

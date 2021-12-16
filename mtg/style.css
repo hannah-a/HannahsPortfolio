@@ -46,7 +46,9 @@ body {
   list-style-type: none;
   margin-right: 1rem;
 }
-
+.fa-angle-left {
+  margin: 1rem 2rem 1rem 1rem;
+}
 .nav-list a {
   display: block;
   color: #f0f0f0;
@@ -66,7 +68,9 @@ body {
 a {
   text-decoration: none;
 }
-
+.nav img {
+  color: white;
+}
 /* header */
 
 header {
@@ -84,7 +88,7 @@ header h1 {
 }
 
 header button {
-  margin-top: 2rem;
+  margin: 2rem;
   padding: 2rem;
   border-radius: 50%;
   color: white;
@@ -219,7 +223,11 @@ figure {
 }
 
 
+/* Select Button */
 
+.bulmaselect {
+  margin: 3.5rem 2rem 2rem 2rem;
+}
 
 
 

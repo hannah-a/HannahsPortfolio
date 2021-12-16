@@ -18,10 +18,7 @@
     <body>
      <nav id="navbar">
         <ul class="nav-list">
-          <li class="navname"><a href="/index.html">Hannah Armstrong</a></li>
-          <li class="navabout"><a href="/index.html">About</a></li>
-          <li class="navprojects"><a href="/index.html">Projects</a></li>
-          <li class="navcontact"><a href="#contact">Contact</a></li>
+          <li class="navname"><a href="/index.html"><i class="fas fa-angle-left" color: white></i>   Hannah Armstrong</a></li>
         </ul>
       </nav> 
       <header>
@@ -29,12 +26,14 @@
         <h2>These are all the cat types in the card game, Magic the Gathering!</h2>
         <button class="loadCats">Magic Cats</button>
         <button class="newCat">Create a Cat</button>
-        <select id="typeSelector">
-          <option>Common</option>
-          <option>Uncommon</option>
-          <option>Rare</option>
-          <option>Mythic</option>
-        </select>
+        <div class="select is-large is-rounded bulmaselect is-danger">
+          <select id="typeSelector">
+            <option>Common</option>
+            <option>Uncommon</option>
+            <option>Rare</option>
+            <option>Mythic</option>
+          </select>
+        </div>
       </header>
       <main>
         <div class="mtgGrid"></div>
