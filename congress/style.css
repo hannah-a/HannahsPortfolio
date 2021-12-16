@@ -132,7 +132,10 @@ h1 {
 #searchBar::placeholder {
   color: var(--dark-yellow);
 }
-
+.memberBox {
+  position: relative;
+  bottom: 14rem;
+}
 .members {
   display: flex;
   flex-wrap: wrap;
@@ -140,6 +143,7 @@ h1 {
   text-align: center;
   /*overflow-y: scroll;
   white-space: nowrap;*/
+
 }
 
 
