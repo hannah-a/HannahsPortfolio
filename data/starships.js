@@ -1,4 +1,4 @@
-export const starships = [
+export const starships = [ //Use of Import and Export statements
   {
     name: 'Executor',
     model: 'Executor-class star dreadnought',

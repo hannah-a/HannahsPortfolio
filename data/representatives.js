@@ -1,4 +1,4 @@
-export const representatives = [
+export const representatives = [ //Use of Import and Export statements
   {
     id: 'A000374',
     title: 'Representative',

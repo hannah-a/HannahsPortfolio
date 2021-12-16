@@ -1,4 +1,4 @@
-import { starships } from '../data/starships.js'
+import { starships } from '../data/starships.js' //Use of Import and Export statements
 import { getLastNumber, removeChildren } from '../utils/index.js'
 
 const nav = document.querySelector('.nav')
@@ -11,13 +11,13 @@ const modalBackground = document.querySelector('.modal-background')
 const shipMessage = document.querySelector('.shipMessage')
 
 closeButton.addEventListener('click', () => modal.classList.toggle('is-active'))
-modalBackground.addEventListener('click', () =>
+modalBackground.addEventListener('click', () => //Use of Arrow functions
   modal.classList.toggle('is-active')
 )
 
 function populateNav() {
-  starships.forEach((starship) => {
-    let anchorWrap = document.createElement('a')
+  starships.forEach((starship) => { //Good use of Arrays
+    let anchorWrap = document.createElement('a') //Proper use of let and const variables
     anchorWrap.href = '#'
     let listItem = document.createElement('li')
     listItem.textContent = starship.name
@@ -38,8 +38,8 @@ function populateShipView(shipData) {
   shipName.className = 'shipName'
   shipName.textContent = shipData.name
   let shipNum = getLastNumber(shipData.url)
-  shipImage.src = `https://starwars-visualguide.com/assets/img/starships/${shipNum}.jpg`
-  shipImage.addEventListener('error', () => {
+  shipImage.src = `https://starwars-visualguide.com/assets/img/starships/${shipNum}.jpg` //Proper use of String manipulation
+  shipImage.addEventListener('error', () => { //Use of Arrow functions
     shipName.hidden = true
     shipImage.hidden = true
     modal.classList.toggle('is-active')

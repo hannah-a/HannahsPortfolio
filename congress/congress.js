@@ -12,7 +12,7 @@ const closeButton = document.querySelector(".modal-close");
 const modalBackground = document.querySelector(".modal-background");
 const memMessage = document.querySelector(".memMessage");
 
-closeButton.addEventListener("click", () =>
+closeButton.addEventListener("click", () => //Use of Arrow functions
   modal.classList.toggle("is-active")
 );
 modalBackground.addEventListener("click", () =>
@@ -35,10 +35,10 @@ function simplifiedMembers(chamberFilter /*naming the argument*/) {
   /*a condition followed by a question mark (?), then an expression to execute if the condition is truthy followed by a colon (:), and finally the expression to execute if the condition is falsy.*/
 
   return filteredArray.map((member) => {
-    const middleName = member.middle_name ? ` ${member.middle_name} ` : ` `;
-    return {
+    const middleName = member.middle_name ? ` ${member.middle_name} ` : ` `; //Use of Strings using Template Literals
+    return { //Use of Objects with key-value pairs
       id: member.id,
-      name: `${member.first_name}${middleName}${member.last_name} (${member.party})`,
+      name: `${member.first_name}${middleName}${member.last_name} (${member.party})`, //Use of Strings using Template Literals
       short_title: member.short_title,
       party: member.party,
       imgURL: `https://www.govtrack.us/static/legislator-photos/${member.govtrack_id}-100px.jpeg`,
@@ -71,7 +71,7 @@ buttonDiv.appendChild(senatorButton);
 function populateMemberDiv(memberProfile) {
   removeChildren(memberDiv);
   memberProfile.forEach((member) => {
-    let memFigure = document.createElement("figure");
+    let memFigure = document.createElement("figure"); //Proper use of let and const variables
     let figImg = document.createElement("img");
     let figCaption = document.createElement("figcaption");
 
@@ -134,7 +134,7 @@ bigWeaselButton.textContent = "The Least Effective Person in Congress";
 bigWeaselButton.addEventListener("click", () => populateWeasel(biggestWeasel));
 buttonDiv.appendChild(bigWeaselButton);
 
-const biggestWeasel = simplifiedMembers().reduce(
+const biggestWeasel = simplifiedMembers().reduce( //Iteration through an Array using loops and Array methods
   (acc, senator) =>
     (acc.missedVotesPct || 0) > senator.missedVotesPct ? acc : senator,
   {}

@@ -1,4 +1,4 @@
-export const films = [
+export const films = [ //Use of Import and Export statements
   {
     title: 'A New Hope',
     episode_id: 4,

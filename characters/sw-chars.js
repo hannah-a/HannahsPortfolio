@@ -1,4 +1,4 @@
-import { people } from '../data/people.js'
+import { people } from '../data/people.js' //Use of Import and Export statements
 import { getLastNumber, removeChildren } from '../utils/index.js'
 
 const main = document.querySelector('#main')
@@ -23,9 +23,9 @@ othersButton.textContent = 'Other Characters'
 othersButton.addEventListener('click', () => populateDOM(otherCharacters))
 mainHeader.appendChild(othersButton)
 
-const maleCharacters = people.filter((person) => person.gender === 'male')
+const maleCharacters = people.filter((person) => person.gender === 'male') //Iteration through an Array using loops and Array methods
 
-const femaleCharacters = people.filter((person) => person.gender === 'female')
+const femaleCharacters = people.filter((person) => person.gender === 'female') //Iteration through an Array using loops and Array methods
 
 const otherCharacters = people.filter((person) => {
   if (
@@ -44,7 +44,7 @@ function populateDOM(characters) {
     const personFig = document.createElement('figure')
     const personImg = document.createElement('img')
     let charNum = getLastNumber(element.url)
-    personImg.src = `https://starwars-visualguide.com/assets/img/characters/${charNum}.jpg`
+    personImg.src = `https://starwars-visualguide.com/assets/img/characters/${charNum}.jpg` //Use of Strings using Template Literals
     const personCaption = document.createElement('figcaption')
     personCaption.textContent = element.name
 

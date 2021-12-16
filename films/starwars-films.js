@@ -3,7 +3,7 @@ import { getLastNumber } from '../utils/index.js'
 
 let filmList = document.querySelector('#filmList')
 
-for (let i = 0; i < films.length; i++) {
+for (let i = 0; i < films.length; i++) { //Iteration through an Array using loops and Array methods
   let figure = document.createElement('figure')
   let figImg = document.createElement('img')
   figImg.src = `https://starwars-visualguide.com/assets/img/films/${i + 1}.jpg`

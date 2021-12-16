@@ -1,4 +1,4 @@
-export const people = [
+export const people = [ //Use of Import and Export statements
   {
     name: "Luke Skywalker",
     height: "172",

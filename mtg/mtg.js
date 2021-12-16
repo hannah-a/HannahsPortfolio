@@ -2,12 +2,12 @@
 // the cat link https://api.scryfall.com/cards/search?as=grid&order=name&q=%28type%3Acreature+type%3Acat%29&format=json
 //rare cat 62 objects https://api.scryfall.com/cards/search?as=grid&order=name&q=type%3Acat+rarity%3Ar&format=json
 
-import { removeChildren } from "../utils/index.js";
+import { removeChildren } from "../utils/index.js"; //Use of Import and Export statements
 
 
 const mtgGrid = document.querySelector(".mtgGrid");
 const loadButton = document.querySelector(".loadCats");
-loadButton.addEventListener("click", () => {
+loadButton.addEventListener("click", () => { //Use of Arrow functions
   removeChildren(mtgGrid);
   loadMTG();
 });
@@ -15,13 +15,13 @@ loadButton.addEventListener("click", () => {
 
 
 function getCatsArray() {
- const allCats = []
+ const allCats = [] //Using Arrays to store and manipulate collections of data
  getAPIData(//only loads 175 at a time
     `https://api.scryfall.com/cards/search?as=grid&order=name&q=%28type%3Acreature+type%3Acat%29&format=json`
   ).then((catData) => {
     for (const card of catData.data) {
-      if (card.hasOwnProperty('card_faces')) {
-      const specialCat = {
+      if (card.hasOwnProperty('card_faces')) { //Good use of conditional logic and value comparison
+      const specialCat = { //Use of Objects with key-value pairs
         name: card.card_faces[0].name,
         artcrop: card.card_faces[0].image_uris.art_crop,
         cardimg: card.card_faces[0].image_uris.normal,
@@ -46,7 +46,7 @@ function getCatsArray() {
     `https://api.scryfall.com/cards/search?format=json&include_extras=false&include_multilingual=false&order=name&page=2&q=%28type%3Acreature+type%3Acat%29&unique=cards`
   ).then((catData) => {
     for (const card of catData.data) {
-      const mappedCat = {
+      const mappedCat = { //Use of Objects with key-value pairs
         name: card.name,
         artcrop: card.image_uris.art_crop,
         cardimg: card.image_uris.normal,
@@ -56,15 +56,18 @@ function getCatsArray() {
       allCats.push(mappedCat)
     }
   });
-  return allCats
+  return allCats //Proper use of variables with proper scope
 }
-const allCats = await getCatsArray() 
+const allCats = await getCatsArray() //Proper use of variables with proper scope
+
 
 function getAllCatsByType(type) {
   const allcatsvar = allCats.filter((cat) => cat.rarity === type)
   console.log(allcatsvar)
   return allcatsvar
 }
+
+
 
 const typeSelector = document.querySelector('#typeSelector')
 typeSelector.addEventListener('change', (event) => {
@@ -74,7 +77,7 @@ typeSelector.addEventListener('change', (event) => {
   allByType.forEach((item) => {
     //console.log(item.hasOwnProperty('card_faces'))
     console.log(item)
-    if("undefined" === typeof(item["card_faces"])) 
+    if("undefined" === typeof(item["card_faces"])) //Good use of conditional logic and value comparison
     {
       populateCard(item)
     } else {
@@ -92,13 +95,13 @@ function getAPIData(url) {
   }
 }
 
-function loadMTG1() {
+/*function loadMTG1() {
   //without a function, js will just read it and call it but with a button you can control it so put it in function
   getAPIData(
     `https://api.scryfall.com/cards/search?as=grid&order=name&q=%28type%3Acreature+type%3Acat%29&format=json`
   ).then((mtgData) => {
     for (const card of mtgData.data) {
-      if (card.hasOwnProperty('card_faces')) {
+      if (card.hasOwnProperty('card_faces')) { //Good use of conditional logic and value comparison
       populateSpecialCard(card)
       } else {
       populateCard(card); 
@@ -113,7 +116,7 @@ function loadMTG1() {
       populateCard(card); //I already have the data so I don't think I need to get the data from the url
     }
   });
-}
+} */
 
 function loadMTG() {
   getAPIData(//only loads 175 at a time
@@ -154,10 +157,10 @@ function loadMTG() {
         // card_faces: false
        }
        populateCard(mappedCat)
+      
      }
    });
  }
-
 
 // Load magic cats buttons
 
@@ -192,8 +195,6 @@ function populateCardFront(card) {
     "https://s3.amazonaws.com/ccg-corporate-production/news-images/Back0_Sheet%20(F)20201203163456929.jpg";
 
   mtgFront.appendChild(imgFront);
-  
-
   return mtgFront;
 }
 
@@ -266,7 +267,7 @@ newButton.addEventListener("click", () => {
   );
   let catLevel = prompt("What is your cats Power and Toughness? (Power/Toughness)")
  
-  let newCat = new Cat(
+  let newCat = new Cat( //Objects using Constructors properly
     catName,
     catType,
     catLevel,
@@ -287,8 +288,8 @@ function getAbilitiesArray(commaString) {
   });
 }
 
-class Cat {
-  constructor(
+class Cat { //Use of custom JavaScript objects
+  constructor(//Objects using Constructors properly
     name,
     type,
     level,
@@ -332,6 +333,7 @@ function populateNewFront(cat) {
 
 
 
+
 // random cat card art_crop api https://api.scryfall.com/cards/random?as=grid&order=name&q=type%3Acat&version=art_crop
 /*function getRandomCatImg() {
   getAPIData('https://api.scryfall.com/cards/random?as=grid&order=name&q=type%3Acat&version=art_crop').then((data) => {return data.image_uris.art_crop})
@@ -344,7 +346,7 @@ function populateNewFront(cat) {
 
 
 function populateNewBack(cat) {
-  const catDiv = document.createElement("div");
+  const catDiv = document.createElement("div"); //Proper use of let and const variables
   catDiv.className = "cardFace back newDiv";
   const catName = document.createElement("h1");
   catName.textContent = cat.name
@@ -359,7 +361,7 @@ function populateNewBack(cat) {
   const catList = document.createElement("ul");
   catList.className = 'newList'
   cat.abilities.forEach((abilityItem) => {
-    let listItem = document.createElement("li");
+    let listItem = document.createElement("li"); //Proper use of let and const variables
     listItem.className = 'newItem'
     listItem.textContent = abilityItem.ability.name;
     catList.appendChild(listItem);
@@ -377,6 +379,5 @@ function populateNewBack(cat) {
 
   return catDiv;
 }
-
 
 //sort buttons 

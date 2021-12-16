@@ -1,4 +1,4 @@
-export const senators = [
+export const senators = [ //Use of Import and Export statements
   {
     id: 'A000360',
     title: 'Senator, 2nd Class',
