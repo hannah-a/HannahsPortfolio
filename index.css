@@ -112,8 +112,8 @@ a {
 
 .grid {
  display: grid;
- grid-template-columns: 1.5fr 4fr 1.5fr;
- grid-template-rows: .5fr 4fr .3fr;
+ grid-template-columns: .5fr 4fr .5fr;
+ grid-template-rows: .3fr 4fr .3fr;
 }
 
 
@@ -147,6 +147,7 @@ a {
  grid-column: 2 / 3;
  grid-row: 1 / 3;
  background-color: var(--light-green);
+ box-shadow: 5px 5px 10px black;
 }
 
 #projects-grid {
@@ -154,8 +155,8 @@ a {
  display: flex;
  flex-wrap: wrap;
  justify-content: center;
- padding-top: 24rem;
- padding-bottom: 4rem;
+ padding-top: 14rem;
+ padding-bottom: 14rem;
 }
 
 .project-tile {
@@ -166,22 +167,43 @@ a {
 figure {
  padding-bottom: 4rem;
  height: 300px;
+ border-radius: 20px;
 }
+
+figure img {
+    border-radius: 20px;
+}
+
+figure img:hover {
+    box-shadow: 2px 2px 5px black;
+}
+
 figcaption {
  display: flex;
  justify-content: center;
  align-items: center;
- font-size: 200%;
+ font-size: 190%;
  color: white;
- background: linear-gradient(#ffffff00, #0e0500, #ffffff00 ); 
+ background: rgb(255,255,255);
+ background: linear-gradient(0deg, rgba(255,255,255,0) 0%, rgba(0,0,0,1) 14%, rgba(0,0,0,1) 76%);
  width: 100%;
- height: 15rem;
+ height: 10vh;
  position: relative;
- bottom: 8rem;
+ top: 26rem;
  z-index: 1;
+ padding-bottom: 1rem;
 }
+
+/* figure:hover {
+    box-shadow: 5px 5px 10px black;
+} */
+
 figcaption i {
  padding-right: 1rem;
+}
+
+figcaption i:hover {
+    transform: rotate(30deg);
 }
 /*Contacts*/
 

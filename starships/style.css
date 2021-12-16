@@ -34,7 +34,7 @@ html {
 body {
     font-family: basic-sans, sans-serif;
     font-weight: 400;
-    background-color: var(--light-grey);
+    background-image: url('https://wallpaperaccess.com/full/5732428.jpg');
 }
    
 @media (max-width: 1200px) {
@@ -45,7 +45,7 @@ body {
 /* Navigation */
 #navbar {
     width: 100%;
-    background-color: var(--main-brown);
+    background-color: black;
     position: fixed;
     z-index: 2;
 }
@@ -73,7 +73,7 @@ body {
 }
    
 .nav-list a:hover {
-    background-color: var(--dark-green);
+    background-color: var(--main-blue);
 }
 
 a {
@@ -98,19 +98,25 @@ a {
 /* Main Container */
 .mainContainer {
     display: flex;
-    background-color: var(--light-grey);
     padding: 0 0 6vh 2vw;
 }
+
 .nav {
     overflow-y: scroll;
-    overflow-x: hidden;
     white-space: nowrap;
     height: 400px;
     width: 30vw;
+    direction: rtl;
+    padding: 2rem;
+    background: rgba(0,0,0,.9);
+    margin-top: 2rem;
+    border-radius: 20px;
 }
 
 .navList {
-  font-size: 2rem;  
+  font-size: 2rem;
+  direction: ltr;
+ 
 }
 .shipViewer {
     display: flex;
@@ -121,8 +127,12 @@ a {
 
 a {
     font-family: basic-sans;
-
+    color: white;
 }
+.nav a:hover {
+    color: red;
+}
+
 img {
     border-radius: 10px;
 }
@@ -131,6 +141,7 @@ img {
     font-size: 3rem;
     text-align: center;
     padding: 2vw;
+    color: white;
 }
 
 .nav::-webkit-scrollbar {
@@ -138,13 +149,19 @@ img {
     border-radius: 100px;
     width: 10px;
     box-shadow: 2px 2px 2px inset rgb(27, 27, 27);
-   
   }
 .nav::-webkit-scrollbar-thumb {
     background-image: linear-gradient(180deg, #ff0000 0%, #0044ff 99%);
     border-radius: 100px;
-  }
+}
    
+.starShips {
+    color: white;
+    background-color: rgba(0,0,0,.9);
+}
+
+
+
 
 /* footer */
 
@@ -154,7 +171,7 @@ img {
     justify-content: center;
     align-items: center;
     height: 60vh;
-    background-color: var(--light-pink);
+    background-color: var(--main-blue);
 }
    
 #contact h2 {
@@ -193,7 +210,19 @@ footer {
     text-align: center;
     font-size: 1.5rem;
     color: rgb(0, 0, 0);
-    background-color: var(--dark-green);
+    background-color: black;
     padding: 0rem 0;
 }
 
+/*modal Stuff*/
+
+.modal-content {
+    width: 80vw;
+}
+.modal-content h1 {
+    font-size: 3rem;
+    position: relative;
+    bottom: 3rem;
+    color: black;
+    text-align: center;
+}
