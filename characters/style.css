@@ -14,18 +14,7 @@
  --light-grey: #f2f7f7;
  --light-pink: #eed9ea;
 }
- /* Fonts to use 
- font-family: basic-sans, sans-serif;
- font-weight: 200(extralight), 400(regular), 700(bold), 900(black);
- font-style: italic, normal;
- */
- /* Colors to use
- --main-brown: #140800;
- --dark-green: #18522C;
- --light-green: #578067;
- --light-grey: #f2f7f7;
- --light-pink: #ebd2e6;
- */
+
  html {
   font-size: 62.5%;
   scroll-behavior: smooth;
