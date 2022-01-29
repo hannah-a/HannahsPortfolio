@@ -2,7 +2,7 @@
 ##### DGM 1600 Intro to Web Scripting
 
 ## Published Site:
-[Hannah Armstrong](www.hannaharmstrong.com "Hannah Armstrong Portfolio")
+[Hannah Armstrong](https:///www.hannaharmstrong.com "Hannah Armstrong Portfolio")
 
 ### Technologies I learned
 1. HTML
