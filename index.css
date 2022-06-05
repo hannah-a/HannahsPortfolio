@@ -71,8 +71,8 @@ a {
 /*Welcome Section*/
 
 #welcome-section {
- background: linear-gradient(#eed9ea 80%,#f2f7f7);
- height: 100vh;
+ background: linear-gradient(#f2cf63 80%,#f2f7f7);
+ height: 80vh;
  display: flex;
  flex-direction: column;
  justify-content: center;
@@ -202,7 +202,7 @@ figcaption i:hover {
  justify-content: center;
  align-items: center;
  height: 60vh;
- background-color: var(--light-pink);
+ background-color: var(--dark-green);
 }
 
 #contact h2 {
@@ -241,6 +241,6 @@ footer {
  text-align: center;
  font-size: 1.5rem;
  color: white;
- background-color: var(--dark-green);
+ background-color: var(--main-grey);
  padding: 1rem 0;
 }
