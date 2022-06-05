@@ -62,7 +62,7 @@ body {
 }
 
 .nav-list a:hover {
- background-color: var(--dark-green);
+ background-color: var(--light-green);
 }
 
 a {
@@ -71,7 +71,7 @@ a {
 /*Welcome Section*/
 
 #welcome-section {
- background: linear-gradient(#def1f1 80%,#ffffff);
+ background: linear-gradient(var(--light-pink) 50%,#ffffff);
  height: 80vh;
  display: flex;
  flex-direction: column;
@@ -92,10 +92,12 @@ a {
  color: var(--dark-green);
  padding-top: 3rem;
  font-size: 5rem;
+ transition: transform 0.3s ease-out;
 }
 
 #welcome-section i:hover {
  transform: translateY(25px);
+ color:#2b8b50;
 }
 /*Project*/
 
@@ -202,7 +204,7 @@ figcaption i:hover {
  justify-content: center;
  align-items: center;
  height: 60vh;
- background-color: var(--light-pink);
+ background-color:  white;
 }
 
 #contact h2 {
@@ -216,6 +218,7 @@ figcaption i:hover {
 #contact div {
  display: flex;
  justify-content: center;
+ padding-bottom: 20vh;
 }
 
 #contact div a {
@@ -228,6 +231,7 @@ figcaption i:hover {
 
 #contact div a:hover{
  transform: translateY(8px);
+ color: var(--light-green);
 }
 
 #contact i {
